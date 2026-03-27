@@ -5,47 +5,48 @@ import { theme } from '../lib/theme';
 export function Slide26() {
     return (
         <div style={{ width: '100%', height: '100%', display: 'flex', padding: '60px 80px', gap: '48px' }}>
-            {/* Budget */}
+            {/* Cột 1: Tài nguyên & Theo dõi */}
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={0}
                     style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, fontWeight: 600, color: '#FFC107', letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '12px' }}>
-                    Budget
+                    Setup Preparation
                 </motion.div>
                 <motion.h2 variants={fadeUp} initial="hidden" animate="visible" custom={0}
                     style={{ fontFamily: theme.fonts.display, fontSize: theme.fontSizes.xl, fontWeight: 800, color: theme.colors.white, marginBottom: '24px' }}>
-                    Phân bổ <span style={{ color: '#FFC107' }}>thông minh</span>
+                    Tài nguyên & <span style={{ color: '#FFC107' }}>Công cụ</span>
                 </motion.h2>
                 {[
-                    { rule: '70/20/10', desc: '70% proven, 20% testing, 10% experimental' },
-                    { rule: 'Scaling rule', desc: 'Tăng budget max 20-30%/ngày' },
-                    { rule: 'Kill threshold', desc: 'Dừng ad set nếu CPA > 2x target sau 3 ngày' },
+                    { rule: 'Tài nguyên Creative', desc: 'Banner chuẩn xác kích thước, Video dọc (9:16) cho TikTok/Reels, Video ngang (16:9) cho YouTube.' },
+                    { rule: 'Hệ thống Tracking', desc: 'Bắt buộc cài đặt Meta Pixel, Google Analytics (GA4), TikTok Pixel vào Landing Page trước khi chạy.' },
+                    { rule: 'Trang đích (Destination)', desc: 'Kiểm tra tốc độ tải trang, luồng chốt đơn (UI/UX) và các nút Call-to-action.' },
                 ].map((item, i) => (
                     <motion.div key={i} variants={fadeUp} initial="hidden" animate="visible" custom={i + 1}
-                        style={{ padding: '14px 20px', marginBottom: '10px', borderLeft: '2px solid #FFC107' }}>
-                        <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: '#FFC107', fontWeight: 600, marginBottom: '4px' }}>{item.rule}</div>
-                        <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha60 }}>{item.desc}</div>
+                        style={{ padding: '18px 20px', marginBottom: '15px', borderLeft: '3px solid #FFC107', background: theme.colors.whiteAlpha10 }}>
+                        <div style={{ fontFamily: theme.fonts.display, fontSize: theme.fontSizes.lg, color: '#FFC107', fontWeight: 800, marginBottom: '6px' }}>{item.rule}</div>
+                        <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.whiteAlpha80 }}>{item.desc}</div>
                     </motion.div>
                 ))}
             </div>
-            {/* Bidding */}
+
+            {/* Cột 2: Data & Xử lý */}
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={0}
                     style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, fontWeight: 600, color: theme.colors.purple, letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '12px' }}>
-                    Bidding
+                    Data & Operations
                 </motion.div>
                 <motion.h2 variants={fadeUp} initial="hidden" animate="visible" custom={0}
                     style={{ fontFamily: theme.fonts.display, fontSize: theme.fontSizes.xl, fontWeight: 800, color: theme.colors.white, marginBottom: '24px' }}>
-                    Chiến lược <span style={{ color: theme.colors.purple }}>đấu giá</span>
+                    Dữ liệu & <span style={{ color: theme.colors.purple }}>Luồng xử lý</span>
                 </motion.h2>
                 {[
-                    { strategy: 'Lowest Cost', desc: 'Mặc định, phù hợp hầu hết chiến dịch' },
-                    { strategy: 'Cost Cap', desc: 'Kiểm soát CPA tối đa, ổn định hơn' },
-                    { strategy: 'Bid Cap', desc: 'Kiểm soát bid tối đa, cho expert' },
+                    { strategy: 'Lịch sử (Historical Data)', desc: 'Tệp CRM (SĐT/Email) để chạy Lookalike Audience (LAL). Benchmark giá CPA cũ.' },
+                    { strategy: 'Kịch bản Chốt sale', desc: 'Offer (Ưu đãi) đủ mạnh để cạnh tranh? Luồng xử lý sau khi có Lead như thế nào?' },
+                    { strategy: 'Thời gian Telesale', desc: 'Sau bao lâu thì Lead được gọi? Media cần phản hồi nhanh để loại bỏ Traffic rác.' },
                 ].map((item, i) => (
                     <motion.div key={i} variants={fadeUp} initial="hidden" animate="visible" custom={i + 4}
-                        style={{ padding: '14px 20px', marginBottom: '10px', borderLeft: `2px solid ${theme.colors.purple}` }}>
-                        <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.purple, fontWeight: 600, marginBottom: '4px' }}>{item.strategy}</div>
-                        <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha60 }}>{item.desc}</div>
+                        style={{ padding: '18px 20px', marginBottom: '15px', borderLeft: `3px solid ${theme.colors.purple}`, background: theme.colors.whiteAlpha10 }}>
+                        <div style={{ fontFamily: theme.fonts.display, fontSize: theme.fontSizes.lg, color: theme.colors.purple, fontWeight: 800, marginBottom: '6px' }}>{item.strategy}</div>
+                        <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.whiteAlpha80 }}>{item.desc}</div>
                     </motion.div>
                 ))}
             </div>
