@@ -73,9 +73,9 @@ function BenchmarksTab() {
 }
 
 const objectives = [
-    { title: 'Nhận thức (Awareness)', desc: 'Tối đa hóa Phạm vi tiếp cận (Reach) và Mức độ nhận biết thương hiệu. Phù hợp cho chiến dịch tung sản phẩm mới.' },
-    { title: 'Cân nhắc (Consideration)', desc: 'Thúc đẩy Lưu lượng truy cập (Traffic), Lượt xem video (Video Views) và Tương tác (Engagement) với bài viết hoặc trang.' },
-    { title: 'Chuyển đổi (Conversion)', desc: 'Tạo khách hàng tiềm năng (Lead Generation), Doanh số (Sales/Catalog) và Số lượt cài đặt ứng dụng (App Promotion).' },
+    { title: 'Nhận thức (Awareness)', desc: 'Bao gồm: Reach (Số người tiếp cận), Reach & Frequency (Tiếp cận & Tần suất), Brand Awareness. Phù hợp tung sản phẩm mới.' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Bao gồm: Traffic (Lưu lượng truy cập), Engagement (Tương tác bài), Video Views (Lượt xem video), Messages (Tin nhắn).' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Bao gồm: Lead Generation (Tạo khách hàng tiềm năng), Sales (Doanh số/Catalog), App Promotion (Cài đặt ứng dụng).' },
 ];
 
 function ObjectivesTab() {

@@ -65,9 +65,9 @@ function BenchmarksTab() {
 }
 
 const objectives = [
-    { title: 'Nhận thức (Awareness)', desc: 'Quảng cáo Display hoặc Video để tăng độ nhận diện thương hiệu trên hệ sinh thái Zalo (Zing, Báo Mới, Zalo App).' },
-    { title: 'Cân nhắc (Consideration)', desc: 'Quảng cáo Zalo OA (Tăng lượt quan tâm), Quảng cáo Bài viết và Quảng cáo Website để kéo lưu lượng truy cập.' },
-    { title: 'Chuyển đổi (Conversion)', desc: 'Quảng cáo Form (Thu thập Lead) và Quảng cáo Tin nhắn (Tư vấn 1:1, chốt đơn) để ra tỷ lệ chuyển đổi trực tiếp.' },
+    { title: 'Nhận thức (Awareness)', desc: 'Hình thức: Quảng cáo Display (hiển thị banner Zing, Báo Mới) hoặc Video để tăng độ nhận diện thương hiệu.' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Hình thức: Quảng cáo Zalo OA (Tăng follower), Bài viết và Quảng cáo Website để kéo lưu lượng truy cập.' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Hình thức: Quảng cáo Form (Thu thập Lead) và Quảng cáo Tin nhắn (Message Ads - Tư vấn 1:1, chốt đơn).' },
 ];
 
 function ObjectivesTab() {

@@ -64,9 +64,9 @@ function BenchmarksTab() {
 }
 
 const objectives = [
-    { title: 'Nhận thức (Awareness)', desc: 'Tiếp cận lượng lớn khách hàng ở đầu phễu (Top of Funnel) để tăng Mức độ nhận biết thương hiệu và Độ phủ với chi phí CPR rẻ.' },
-    { title: 'Cân nhắc (Consideration)', desc: 'Sự cân nhắc về thương hiệu/sản phẩm. Thúc đẩy người dùng nhấp vào banner để tìm hiểu thêm (Lưu lượng truy cập trang web).' },
-    { title: 'Chuyển đổi (Conversion)', desc: 'Sử dụng chiến dịch Tiếp thị lại (Remarketing) để thúc đẩy Doanh số hoặc Khách hàng tiềm năng từ những người đã mở website.' },
+    { title: 'Nhận thức (Awareness)', desc: 'Mục tiêu: Brand Awareness & Reach. Phủ banner tiếp cận lượng lớn khách hàng ở đầu phễu (Top of Funnel) với chi phí rẻ.' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Mục tiêu: Product & Brand Consideration (Cân nhắc), Website Traffic. Thúc đẩy người dùng nhấp vào banner để tìm hiểu thêm hiện diện.' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Mục tiêu: Sales, Leads. Thường kết hợp với chiến dịch Remarketing (Tiếp thị lại) để ra chuyển đổi từ tệp người đã mở website.' },
 ];
 
 function ObjectivesTab() {

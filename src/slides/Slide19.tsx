@@ -64,9 +64,9 @@ function PublishersTab() {
 }
 
 const objectives = [
-    { title: 'Nhận thức (Awareness)', desc: 'Chiếm lĩnh các vị trí hiển thị đắc địa (Trang chủ, Xuyên trang) để tối đa hóa Phạm vi tiếp cận và Nhận diện thương hiệu.' },
-    { title: 'Cân nhắc (Consideration)', desc: 'Sử dụng định dạng Native Article (Bài PR) để truyền tải thông điệp sâu hơn, tăng thời gian Onsite của độc giả.' },
-    { title: 'Chuyển đổi (Conversion)', desc: 'Ít dùng để chốt sale trực tiếp, nhưng hỗ trợ đầu phễu tốt để chèn tracking code phục vụ cho việc Remarketing.' },
+    { title: 'Nhận thức (Awareness)', desc: 'Định dạng: CPD (Cost per Duration), Masthead, Pop-up (tràn viền), Catfish (bám đáy). Tối ưu Reach và nhận diện.' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Định dạng: Native Article (Bài PR), Info-graphic để truyền tải thông điệp sâu hơn, tăng thời gian Onsite của độc giả.' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Định dạng: Banner CPC (Dẫn traffic về landing page) kết hợp chèn Tracking Pixels hỗ trợ phễu Remarketing chốt sale.' },
 ];
 
 function ObjectivesTab() {

@@ -64,9 +64,9 @@ function BenchmarksTab() {
 }
 
 const objectives = [
-    { title: 'Nhận thức (Awareness)', desc: 'Ít dùng cho nhận thức, nhưng có thể tăng hiện diện thương hiệu khi khách hàng tìm kiếm từ khóa ngành (Thông qua Impression Share).' },
-    { title: 'Cân nhắc (Consideration)', desc: 'Lưu lượng truy cập trang web (Website Traffic). Thu hút khách hàng đang trong giai đoạn tìm hiểu, so sánh sản phẩm/dịch vụ.' },
-    { title: 'Chuyển đổi (Conversion)', desc: 'Mạnh nhất về Doanh số (Sales) và Khách hàng tiềm năng (Leads). Chốt sale trực tiếp khi có Intent (Ý định) tìm kiếm cao.' },
+    { title: 'Nhận thức (Awareness)', desc: 'Mục tiêu: Brand Awareness & Reach (Nhận biết thương hiệu và phạm vi tiếp cận). Thu hút thị phần hiển thị (Impression Share) từ khóa ngành.' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Mục tiêu: Website Traffic (Lưu lượng truy cập). Thu hút khách hàng đang trong giai đoạn tìm hiểu, so sánh sản phẩm/dịch vụ.' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Mục tiêu: Sales (Doanh số bán hàng) và Leads (Khách hàng tiềm năng). Chốt sale trực tiếp khi có Intent (Ý định) tìm kiếm cao.' },
 ];
 
 function ObjectivesTab() {

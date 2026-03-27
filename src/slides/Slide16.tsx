@@ -65,9 +65,9 @@ function BenchmarksTab() {
 }
 
 const objectives = [
-    { title: 'Nhận thức (Awareness)', desc: 'Mức độ nhận biết thương hiệu và Phạm vi tiếp cận thông qua định dạng Video Bumper (6s) hoặc Không thể bỏ qua (15s).' },
-    { title: 'Cân nhắc (Consideration)', desc: 'Sự cân nhắc về thương hiệu thông qua Video TrueView (Có thể bỏ qua) giúp kể câu chuyện thương hiệu chi tiết hơn.' },
-    { title: 'Chuyển đổi (Conversion)', desc: 'Thúc đẩy Doanh số, Khách hàng tiềm năng qua Video Action Campaigns (có nút Call-to-action điền form hoặc mua hàng).' },
+    { title: 'Nhận thức (Awareness)', desc: 'Mục tiêu: Brand Awareness & Reach. Sử dụng định dạng mạng hiển thị Video Bumper (6s) hoặc Non-skippable in-stream ads (15s).' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Mục tiêu: Product & Brand Consideration. Sử dụng Skippable in-stream ads (TrueView) để kể câu chuyện thương hiệu chi tiết hơn.' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Mục tiêu: Sales, Leads, Website Traffic thông qua Video Action Campaigns (có nút Call-to-action điền form hoặc mua hàng trực tiếp).' },
 ];
 
 function ObjectivesTab() {

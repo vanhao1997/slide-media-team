@@ -66,9 +66,9 @@ function BenchmarksTab() {
 }
 
 const objectives = [
-    { title: 'Nhận thức (Awareness)', desc: 'Tăng mức độ nhận biết thương hiệu (Brand Awareness) và tiếp cận (Reach) trong tệp khách hàng B2B chuyên nghiệp.' },
-    { title: 'Cân nhắc (Consideration)', desc: 'Lượt truy cập trang web (Website Visits) và Tương tác (Engagement) thông qua Sponsored Content hoặc InMail.' },
-    { title: 'Chuyển đổi (Conversion)', desc: 'Thu thập khách hàng tiềm năng (Lead Generation Form) chất lượng cao và Thúc đẩy chuyển đổi trên trang web (Conversions).' },
+    { title: 'Nhận thức (Awareness)', desc: 'Mục tiêu: Brand Awareness. Trả tiền theo luồng CPM để tăng tỷ lệ hiển thị trong tệp khách hàng B2B chuyên nghiệp.' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Mục tiêu: Website Visits (Lượt truy cập trang web) và Engagement (Tương tác) thông qua Sponsored Content/InMail.' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Mục tiêu: Lead Generation (Thu thập Lead Form nội sàn chất lượng cao) và Website Conversions (Chuyển đổi web).' },
 ];
 
 function ObjectivesTab() {

@@ -66,9 +66,9 @@ function BenchmarksTab() {
 }
 
 const objectives = [
-    { title: 'Nhận thức (Awareness)', desc: 'Phạm vi tiếp cận (Reach): Hiển thị quảng cáo với số người tối đa để xây dựng nhận biết thương hiệu nhanh chóng.' },
-    { title: 'Cân nhắc (Consideration)', desc: 'Lưu lượng truy cập, Lượt xem video, và Tương tác với cộng đồng (Tăng người theo dõi, truy cập hồ sơ).' },
-    { title: 'Chuyển đổi (Conversion)', desc: 'Bán hàng (TikTok Shop/Web), Tạo khách hàng tiềm năng (Lead Generation) và Quảng cáo ứng dụng (App Installs).' },
+    { title: 'Nhận thức (Awareness)', desc: 'Mục tiêu: Reach (Phạm vi tiếp cận). Hiển thị quảng cáo với số người tối đa để xây dựng nhận biết thương hiệu nhanh chóng.' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Mục tiêu: Traffic (Lưu lượng truy cập), Video Views (Lượt xem video), Community Interaction (Tương tác cộng đồng/Follower).' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Mục tiêu: App Promotion (Cài đặt ứng dụng), Lead Generation (Tạo KH tiềm năng), Shop Purchases (Bán hàng).' },
 ];
 
 function ObjectivesTab() {
