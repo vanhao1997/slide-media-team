@@ -72,12 +72,33 @@ function BenchmarksTab() {
     );
 }
 
+const objectives = [
+    { title: 'Brand Awareness', desc: 'Tăng mức độ nhận diện thương hiệu, tiếp cận lượng người dùng lớn với chi phí CPM rẻ nhất bằng định dạng Video/Image.' },
+    { title: 'Lead Generation', desc: 'Thu thập danh sách khách hàng tiềm năng (SĐT, Email) trực tiếp trên nền tảng Facebook bằng định dạng Lead Form Ads hoặc Click-to-Messenger.' },
+    { title: 'Conversions / E-commerce', desc: 'Thúc đẩy mua hàng trực tiếp trên website nhờ Meta Pixel, Conversions API (CAPI) và Dynamic Product Ads (DPA).' },
+    { title: 'App Installs', desc: 'Tăng số lượt tải ứng dụng, tối ưu hóa theo sự kiện cài đặt ứng dụng hoặc hành động cụ thể trong App (In-app events).' },
+];
+
+function ObjectivesTab() {
+    return (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignContent: 'start' }}>
+            {objectives.map((obj, i) => (
+                <div key={i} style={{ padding: '24px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', borderLeft: `4px solid ${META_COLOR}` }}>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.lg, color: theme.colors.white, fontWeight: 700, marginBottom: '12px' }}>{obj.title}</div>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.whiteAlpha60, lineHeight: 1.6 }}>{obj.desc}</div>
+                </div>
+            ))}
+        </div>
+    );
+}
+
 export function Slide13() {
     return (
         <TabbedSlide
             subtitle="Meta Ads"
             title='<span style="color: #1877F2">Meta Ads</span> — Chi tiết Ad Formats & Benchmark'
             tabs={[
+                { label: 'Mục tiêu', color: META_COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: META_COLOR, content: <FormatsTab /> },
                 { label: 'Benchmark & Tips', color: META_COLOR, content: <BenchmarksTab /> },
             ]}

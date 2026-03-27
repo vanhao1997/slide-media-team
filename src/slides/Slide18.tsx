@@ -64,12 +64,32 @@ function BenchmarksTab() {
     );
 }
 
+const objectives = [
+    { title: 'B2C Lead Generation', desc: 'Tìm kiếm khách hàng tiềm năng cho các ngành dịch vụ, giá trị cao (Bất động sản, Giáo dục, Thẩm mỹ viện) thông qua Zalo Form Ads hoặc Click-to-Message.' },
+    { title: 'Local Business Traffic', desc: 'Thúc đẩy khách hàng trong bán kính hẹp (vài km) đến cửa hàng trực tiếp nhờ khả năng targeting theo vị trí địa lý rất chi tiết sâu đến từng phường/xã.' },
+    { title: 'Customer Care & Retention', desc: 'Phát triển tệp khách hàng thân thiết (Follow Zalo OA) để chăm sóc hoặc remarketing sau bán hàng thông qua Zalo ZNS và Broadcast message miễn phí/giá rẻ.' },
+];
+
+function ObjectivesTab() {
+    return (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignContent: 'start' }}>
+            {objectives.map((obj, i) => (
+                <div key={i} style={{ padding: '24px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', borderLeft: `4px solid ${COLOR}` }}>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.lg, color: theme.colors.white, fontWeight: 700, marginBottom: '12px' }}>{obj.title}</div>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.whiteAlpha60, lineHeight: 1.6 }}>{obj.desc}</div>
+                </div>
+            ))}
+        </div>
+    );
+}
+
 export function Slide18() {
     return (
         <TabbedSlide
             subtitle="Zalo Ads"
             title='<span style="color: #0068FF">Zalo Ads</span> — Ad Formats & Benchmark'
             tabs={[
+                { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },
                 { label: 'Benchmark & Tips', color: COLOR, content: <BenchmarksTab /> },
             ]}

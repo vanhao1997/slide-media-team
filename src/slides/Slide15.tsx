@@ -63,12 +63,32 @@ function BenchmarksTab() {
     );
 }
 
+const objectives = [
+    { title: 'Brand Awareness', desc: 'Phủ sóng thương hiệu rộng rãi trên hơn 2 triệu website và ứng dụng nằm trong mạng lưới hiển thị của Google với chi phí (CPM/CPC) rất thấp.' },
+    { title: 'Remarketing', desc: 'Chiến thuật "bám đuổi" khách hàng đã từng truy cập website nhưng chưa mua hàng, nhắc nhở họ quay lại hoàn tất giao dịch.' },
+    { title: 'Traffic Generation', desc: 'Thu hút lượng lớn người dùng mới ở vị trí top phễu (Top of Funnel) truy cập vào website thông qua các banner quảng cáo bắt mắt.' },
+];
+
+function ObjectivesTab() {
+    return (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignContent: 'start' }}>
+            {objectives.map((obj, i) => (
+                <div key={i} style={{ padding: '24px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', borderLeft: `4px solid ${COLOR}` }}>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.lg, color: theme.colors.white, fontWeight: 700, marginBottom: '12px' }}>{obj.title}</div>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.whiteAlpha60, lineHeight: 1.6 }}>{obj.desc}</div>
+                </div>
+            ))}
+        </div>
+    );
+}
+
 export function Slide15() {
     return (
         <TabbedSlide
             subtitle="Google Display Network"
             title='<span style="color: #4285F4">GDN</span> — Ad Formats & Benchmark'
             tabs={[
+                { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },
                 { label: 'Benchmark & Tips', color: COLOR, content: <BenchmarksTab /> },
             ]}

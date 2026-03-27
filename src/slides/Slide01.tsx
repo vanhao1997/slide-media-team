@@ -29,6 +29,20 @@ export function Slide01() {
                     initial="hidden"
                     animate="visible"
                     custom={0}
+                    style={{ marginBottom: '32px' }}
+                >
+                    <img
+                        src="/p2p-logo.png"
+                        alt="P2P Digital"
+                        style={{ height: '64px', objectFit: 'contain' }}
+                    />
+                </motion.div>
+
+                <motion.div
+                    variants={fadeIn}
+                    initial="hidden"
+                    animate="visible"
+                    custom={1}
                     style={{
                         fontFamily: theme.fonts.body,
                         fontSize: theme.fontSizes.sm,

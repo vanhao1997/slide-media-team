@@ -64,12 +64,32 @@ function BenchmarksTab() {
     );
 }
 
+const objectives = [
+    { title: 'Massive Brand Awareness', desc: 'Xây dựng nhận diện thương hiệu mạnh mẽ và tiếp cận tệp người dùng khổng lồ thông qua các định dạng Video ngắn và dài.' },
+    { title: 'Product Consideration', desc: 'Sử dụng storytelling (kể chuyện) để giới thiệu tính năng sản phẩm một cách trực quan, giúp khách hàng cân nhắc trước khi mua.' },
+    { title: 'Drive Action & Leads', desc: 'Thúc đẩy chuyển đổi (mua hàng, để lại thông tin) thông qua Video Action Campaigns với nút kêu gọi hành động (CTA) nổi bật trên video.' },
+];
+
+function ObjectivesTab() {
+    return (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignContent: 'start' }}>
+            {objectives.map((obj, i) => (
+                <div key={i} style={{ padding: '24px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', borderLeft: `4px solid ${COLOR}` }}>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.lg, color: theme.colors.white, fontWeight: 700, marginBottom: '12px' }}>{obj.title}</div>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.whiteAlpha60, lineHeight: 1.6 }}>{obj.desc}</div>
+                </div>
+            ))}
+        </div>
+    );
+}
+
 export function Slide16() {
     return (
         <TabbedSlide
             subtitle="YouTube Ads"
             title='<span style="color: #FF0000">YouTube Ads</span> — Ad Formats & Benchmark'
             tabs={[
+                { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },
                 { label: 'Benchmark & Tips', color: COLOR, content: <BenchmarksTab /> },
             ]}

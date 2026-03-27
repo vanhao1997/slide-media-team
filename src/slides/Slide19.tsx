@@ -63,12 +63,32 @@ function PublishersTab() {
     );
 }
 
+const objectives = [
+    { title: 'Massive Brand Awareness', desc: 'Xây dựng độ phủ thương hiệu cực lớn thông qua việc xuất hiện ở các vị trí đắc địa (Trang chủ, Xuyên trang) trên các đầu báo top đầu Việt Nam (VnExpress, Dân Trí...).' },
+    { title: 'Trust & Credibility', desc: 'Gắn liền hình ảnh thương hiệu với các trang báo điện tử chính thống, uy tín giúp tăng độ tin cậy trong mắt khách hàng (Brand Safety 100%).' },
+    { title: 'PR & Storytelling', desc: 'Truyền tải thông điệp sâu hơn thông qua định dạng Native Article (Bài PR) kết hợp với các định dạng banner bắt mắt để thu hút độc giả.' },
+];
+
+function ObjectivesTab() {
+    return (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignContent: 'start' }}>
+            {objectives.map((obj, i) => (
+                <div key={i} style={{ padding: '24px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', borderLeft: `4px solid ${COLOR}` }}>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.lg, color: theme.colors.white, fontWeight: 700, marginBottom: '12px' }}>{obj.title}</div>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.whiteAlpha60, lineHeight: 1.6 }}>{obj.desc}</div>
+                </div>
+            ))}
+        </div>
+    );
+}
+
 export function Slide19() {
     return (
         <TabbedSlide
             subtitle="Display Banner Ads"
             title='<span style="color: #FF9800">Display Banner</span> — Admicro, VnExpress & Báo lớn VN'
             tabs={[
+                { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },
                 { label: 'Publishers & Tips', color: COLOR, content: <PublishersTab /> },
             ]}

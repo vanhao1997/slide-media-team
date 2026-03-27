@@ -63,12 +63,33 @@ function BenchmarksTab() {
     );
 }
 
+const objectives = [
+    { title: 'Sales / E-commerce', desc: 'Thúc đẩy doanh số bán hàng trực tuyến mạnh mẽ nhờ việc hiển thị sản phẩm chính xác khi người dùng chủ động tìm kiếm từ khóa mua hàng (High-intent).' },
+    { title: 'Lead Generation', desc: 'Khuyến khích người dùng để lại thông tin tư vấn, đăng ký dịch vụ thông qua website Landing Page hoặc Click-to-Call trực tiếp từ kết quả tìm kiếm.' },
+    { title: 'Website Traffic', desc: 'Điều hướng số lượng lớn người dùng quan tâm đến một chủ đề cụ thể vào website để đọc nội dung, tìm hiểu sản phẩm/dịch vụ.' },
+    { title: 'Local Store Visits', desc: 'Kéo khách hàng đến cửa hàng offline bằng cách kết hợp vị trí địa lý của người dùng với các từ khóa tìm kiếm theo khu vực (Near me).' },
+];
+
+function ObjectivesTab() {
+    return (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignContent: 'start' }}>
+            {objectives.map((obj, i) => (
+                <div key={i} style={{ padding: '24px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', borderLeft: `4px solid ${COLOR}` }}>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.lg, color: theme.colors.white, fontWeight: 700, marginBottom: '12px' }}>{obj.title}</div>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.whiteAlpha60, lineHeight: 1.6 }}>{obj.desc}</div>
+                </div>
+            ))}
+        </div>
+    );
+}
+
 export function Slide14() {
     return (
         <TabbedSlide
             subtitle="Google Search Ads"
             title='<span style="color: #34A853">Google Search</span> — Ad Formats & Benchmark'
             tabs={[
+                { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },
                 { label: 'Benchmark & Tips', color: COLOR, content: <BenchmarksTab /> },
             ]}

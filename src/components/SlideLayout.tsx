@@ -114,6 +114,26 @@ export function SlideLayout({
                 >
                     {slideIndex + 1} / {totalSlides}
                 </div>
+
+                {/* P2P Digital Logo Watermark */}
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: '24px',
+                        right: '32px',
+                        zIndex: 50,
+                    }}
+                >
+                    <img
+                        src="/p2p-logo.png"
+                        alt="P2P Digital"
+                        style={{
+                            height: '32px',
+                            opacity: 0.8,
+                            filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))'
+                        }}
+                    />
+                </div>
             </div>
         </div>
     );

@@ -65,12 +65,33 @@ function BenchmarksTab() {
     );
 }
 
+const objectives = [
+    { title: 'Viral Awareness & Reach', desc: 'Tiếp cận lượng lớn khách hàng trẻ (Gen Z, Millennials) nhanh chóng thông qua các xu hướng (trends) và hashtag challenge.' },
+    { title: 'Community Engagement', desc: 'Khuyến khích người dùng sáng tạo nội dung (UGC - User Generated Content) tương tác trực tiếp với thương hiệu.' },
+    { title: 'Shoppertainment / E-commerce', desc: 'Thúc đẩy mua sắm kết hợp giải trí trực tiếp thông qua quảng cáo liền mạch dẫn về TikTok Shop (Livestream, Video Shopping).' },
+    { title: 'App Installs', desc: 'Cực kỳ hiệu quả khi quảng bá các ứng dụng giải trí, game, tiện ích với chi phí cài đặt (CPI) rất cạnh tranh.' },
+];
+
+function ObjectivesTab() {
+    return (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignContent: 'start' }}>
+            {objectives.map((obj, i) => (
+                <div key={i} style={{ padding: '24px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', borderLeft: `4px solid ${COLOR}` }}>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.lg, color: theme.colors.white, fontWeight: 700, marginBottom: '12px' }}>{obj.title}</div>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.whiteAlpha60, lineHeight: 1.6 }}>{obj.desc}</div>
+                </div>
+            ))}
+        </div>
+    );
+}
+
 export function Slide17() {
     return (
         <TabbedSlide
             subtitle="TikTok Ads"
             title='<span style="color: #FE2C55">TikTok Ads</span> — Ad Formats & Benchmark'
             tabs={[
+                { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },
                 { label: 'Benchmark & Tips', color: COLOR, content: <BenchmarksTab /> },
             ]}

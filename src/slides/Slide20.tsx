@@ -65,12 +65,32 @@ function BenchmarksTab() {
     );
 }
 
+const objectives = [
+    { title: 'B2B Lead Generation', desc: 'Thu thập thông tin khách hàng doanh nghiệp chất lượng cao (C-level, Manager, Decision Makers) thông qua Lead Gen Forms được điền tự động vô cùng tiện lợi.' },
+    { title: 'Thought Leadership', desc: 'Định vị thương hiệu, khẳng định vị thế chuyên gia trong ngành thông qua việc phân phối các báo cáo, nghiên cứu chuyên sâu (Whitepapers, Industry Reports).' },
+    { title: 'Employer Branding', desc: 'Tiếp cận và tuyển dụng các nhân sự cấp cao, xây dựng hình ảnh nhà tuyển dụng chuyên nghiệp để thu hút nhân tài gia nhập công ty.' },
+];
+
+function ObjectivesTab() {
+    return (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignContent: 'start' }}>
+            {objectives.map((obj, i) => (
+                <div key={i} style={{ padding: '24px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', borderLeft: `4px solid ${COLOR}` }}>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.lg, color: theme.colors.white, fontWeight: 700, marginBottom: '12px' }}>{obj.title}</div>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.whiteAlpha60, lineHeight: 1.6 }}>{obj.desc}</div>
+                </div>
+            ))}
+        </div>
+    );
+}
+
 export function Slide20() {
     return (
         <TabbedSlide
             subtitle="LinkedIn Ads"
             title='<span style="color: #0A66C2">LinkedIn Ads</span> — Ad Formats & Benchmark'
             tabs={[
+                { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },
                 { label: 'Benchmark & Tips', color: COLOR, content: <BenchmarksTab /> },
             ]}
