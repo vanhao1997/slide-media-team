@@ -6,7 +6,7 @@ import {
   Slide11, Slide12, Slide13, Slide14, Slide15,
   Slide16, Slide17, Slide18, Slide19, Slide20,
   Slide21, Slide22, Slide23, Slide24, Slide25,
-  Slide27, Slide29, Slide30, Slide31, Slide32,
+  Slide26, Slide27, Slide29, Slide30, Slide31, Slide32,
 } from './slides';
 
 const slides = [
@@ -15,7 +15,7 @@ const slides = [
   Slide11, Slide12, Slide13, Slide14, Slide15,
   Slide16, Slide17, Slide18, Slide19, Slide20,
   Slide21, Slide22, Slide23, Slide24, Slide25,
-  Slide27, Slide29, Slide30, Slide31, Slide32,
+  Slide26, Slide27, Slide29, Slide30, Slide31, Slide32,
 ];
 
 function App() {

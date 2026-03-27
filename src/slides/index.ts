@@ -23,6 +23,7 @@ export { Slide22 } from './Slide22';
 export { Slide23 } from './Slide23';
 export { Slide24 } from './Slide24';
 export { Slide25 } from './Slide25';
+export { Slide26 } from './Slide26';
 export { Slide27 } from './Slide27';
 export { Slide29 } from './Slide29';
 export { Slide30 } from './Slide30';
