@@ -64,9 +64,9 @@ function PublishersTab() {
 }
 
 const objectives = [
-    { title: 'Massive Brand Awareness', desc: 'Xây dựng độ phủ thương hiệu cực lớn thông qua việc xuất hiện ở các vị trí đắc địa (Trang chủ, Xuyên trang) trên các đầu báo top đầu Việt Nam (VnExpress, Dân Trí...).' },
-    { title: 'Trust & Credibility', desc: 'Gắn liền hình ảnh thương hiệu với các trang báo điện tử chính thống, uy tín giúp tăng độ tin cậy trong mắt khách hàng (Brand Safety 100%).' },
-    { title: 'PR & Storytelling', desc: 'Truyền tải thông điệp sâu hơn thông qua định dạng Native Article (Bài PR) kết hợp với các định dạng banner bắt mắt để thu hút độc giả.' },
+    { title: 'Nhận thức (Awareness)', desc: 'Chiếm lĩnh các vị trí hiển thị đắc địa (Trang chủ, Xuyên trang) để tối đa hóa Phạm vi tiếp cận và Nhận diện thương hiệu.' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Sử dụng định dạng Native Article (Bài PR) để truyền tải thông điệp sâu hơn, tăng thời gian Onsite của độc giả.' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Ít dùng để chốt sale trực tiếp, nhưng hỗ trợ đầu phễu tốt để chèn tracking code phục vụ cho việc Remarketing.' },
 ];
 
 function ObjectivesTab() {

@@ -65,9 +65,9 @@ function BenchmarksTab() {
 }
 
 const objectives = [
-    { title: 'B2C Lead Generation', desc: 'Tìm kiếm khách hàng tiềm năng cho các ngành dịch vụ, giá trị cao (Bất động sản, Giáo dục, Thẩm mỹ viện) thông qua Zalo Form Ads hoặc Click-to-Message.' },
-    { title: 'Local Business Traffic', desc: 'Thúc đẩy khách hàng trong bán kính hẹp (vài km) đến cửa hàng trực tiếp nhờ khả năng targeting theo vị trí địa lý rất chi tiết sâu đến từng phường/xã.' },
-    { title: 'Customer Care & Retention', desc: 'Phát triển tệp khách hàng thân thiết (Follow Zalo OA) để chăm sóc hoặc remarketing sau bán hàng thông qua Zalo ZNS và Broadcast message miễn phí/giá rẻ.' },
+    { title: 'Nhận thức (Awareness)', desc: 'Quảng cáo Display hoặc Video để tăng độ nhận diện thương hiệu trên hệ sinh thái Zalo (Zing, Báo Mới, Zalo App).' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Quảng cáo Zalo OA (Tăng lượt quan tâm), Quảng cáo Bài viết và Quảng cáo Website để kéo lưu lượng truy cập.' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Quảng cáo Form (Thu thập Lead) và Quảng cáo Tin nhắn (Tư vấn 1:1, chốt đơn) để ra tỷ lệ chuyển đổi trực tiếp.' },
 ];
 
 function ObjectivesTab() {

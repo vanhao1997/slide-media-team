@@ -64,10 +64,9 @@ function BenchmarksTab() {
 }
 
 const objectives = [
-    { title: 'Sales / E-commerce', desc: 'Thúc đẩy doanh số bán hàng trực tuyến mạnh mẽ nhờ việc hiển thị sản phẩm chính xác khi người dùng chủ động tìm kiếm từ khóa mua hàng (High-intent).' },
-    { title: 'Lead Generation', desc: 'Khuyến khích người dùng để lại thông tin tư vấn, đăng ký dịch vụ thông qua website Landing Page hoặc Click-to-Call trực tiếp từ kết quả tìm kiếm.' },
-    { title: 'Website Traffic', desc: 'Điều hướng số lượng lớn người dùng quan tâm đến một chủ đề cụ thể vào website để đọc nội dung, tìm hiểu sản phẩm/dịch vụ.' },
-    { title: 'Local Store Visits', desc: 'Kéo khách hàng đến cửa hàng offline bằng cách kết hợp vị trí địa lý của người dùng với các từ khóa tìm kiếm theo khu vực (Near me).' },
+    { title: 'Nhận thức (Awareness)', desc: 'Ít dùng cho nhận thức, nhưng có thể tăng hiện diện thương hiệu khi khách hàng tìm kiếm từ khóa ngành (Thông qua Impression Share).' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Lưu lượng truy cập trang web (Website Traffic). Thu hút khách hàng đang trong giai đoạn tìm hiểu, so sánh sản phẩm/dịch vụ.' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Mạnh nhất về Doanh số (Sales) và Khách hàng tiềm năng (Leads). Chốt sale trực tiếp khi có Intent (Ý định) tìm kiếm cao.' },
 ];
 
 function ObjectivesTab() {

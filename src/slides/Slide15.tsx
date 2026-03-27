@@ -64,9 +64,9 @@ function BenchmarksTab() {
 }
 
 const objectives = [
-    { title: 'Brand Awareness', desc: 'Phủ sóng thương hiệu rộng rãi trên hơn 2 triệu website và ứng dụng nằm trong mạng lưới hiển thị của Google với chi phí (CPM/CPC) rất thấp.' },
-    { title: 'Remarketing', desc: 'Chiến thuật "bám đuổi" khách hàng đã từng truy cập website nhưng chưa mua hàng, nhắc nhở họ quay lại hoàn tất giao dịch.' },
-    { title: 'Traffic Generation', desc: 'Thu hút lượng lớn người dùng mới ở vị trí top phễu (Top of Funnel) truy cập vào website thông qua các banner quảng cáo bắt mắt.' },
+    { title: 'Nhận thức (Awareness)', desc: 'Tiếp cận lượng lớn khách hàng ở đầu phễu (Top of Funnel) để tăng Mức độ nhận biết thương hiệu và Độ phủ với chi phí CPR rẻ.' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Sự cân nhắc về thương hiệu/sản phẩm. Thúc đẩy người dùng nhấp vào banner để tìm hiểu thêm (Lưu lượng truy cập trang web).' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Sử dụng chiến dịch Tiếp thị lại (Remarketing) để thúc đẩy Doanh số hoặc Khách hàng tiềm năng từ những người đã mở website.' },
 ];
 
 function ObjectivesTab() {

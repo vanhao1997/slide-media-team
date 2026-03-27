@@ -73,10 +73,9 @@ function BenchmarksTab() {
 }
 
 const objectives = [
-    { title: 'Brand Awareness', desc: 'Tăng mức độ nhận diện thương hiệu, tiếp cận lượng người dùng lớn với chi phí CPM rẻ nhất bằng định dạng Video/Image.' },
-    { title: 'Lead Generation', desc: 'Thu thập danh sách khách hàng tiềm năng (SĐT, Email) trực tiếp trên nền tảng Facebook bằng định dạng Lead Form Ads hoặc Click-to-Messenger.' },
-    { title: 'Conversions / E-commerce', desc: 'Thúc đẩy mua hàng trực tiếp trên website nhờ Meta Pixel, Conversions API (CAPI) và Dynamic Product Ads (DPA).' },
-    { title: 'App Installs', desc: 'Tăng số lượt tải ứng dụng, tối ưu hóa theo sự kiện cài đặt ứng dụng hoặc hành động cụ thể trong App (In-app events).' },
+    { title: 'Nhận thức (Awareness)', desc: 'Tối đa hóa Phạm vi tiếp cận (Reach) và Mức độ nhận biết thương hiệu. Phù hợp cho chiến dịch tung sản phẩm mới.' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Thúc đẩy Lưu lượng truy cập (Traffic), Lượt xem video (Video Views) và Tương tác (Engagement) với bài viết hoặc trang.' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Tạo khách hàng tiềm năng (Lead Generation), Doanh số (Sales/Catalog) và Số lượt cài đặt ứng dụng (App Promotion).' },
 ];
 
 function ObjectivesTab() {

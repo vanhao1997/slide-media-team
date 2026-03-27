@@ -66,9 +66,9 @@ function BenchmarksTab() {
 }
 
 const objectives = [
-    { title: 'B2B Lead Generation', desc: 'Thu thập thông tin khách hàng doanh nghiệp chất lượng cao (C-level, Manager, Decision Makers) thông qua Lead Gen Forms được điền tự động vô cùng tiện lợi.' },
-    { title: 'Thought Leadership', desc: 'Định vị thương hiệu, khẳng định vị thế chuyên gia trong ngành thông qua việc phân phối các báo cáo, nghiên cứu chuyên sâu (Whitepapers, Industry Reports).' },
-    { title: 'Employer Branding', desc: 'Tiếp cận và tuyển dụng các nhân sự cấp cao, xây dựng hình ảnh nhà tuyển dụng chuyên nghiệp để thu hút nhân tài gia nhập công ty.' },
+    { title: 'Nhận thức (Awareness)', desc: 'Tăng mức độ nhận biết thương hiệu (Brand Awareness) và tiếp cận (Reach) trong tệp khách hàng B2B chuyên nghiệp.' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Lượt truy cập trang web (Website Visits) và Tương tác (Engagement) thông qua Sponsored Content hoặc InMail.' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Thu thập khách hàng tiềm năng (Lead Generation Form) chất lượng cao và Thúc đẩy chuyển đổi trên trang web (Conversions).' },
 ];
 
 function ObjectivesTab() {

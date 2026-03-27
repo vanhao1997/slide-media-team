@@ -66,10 +66,9 @@ function BenchmarksTab() {
 }
 
 const objectives = [
-    { title: 'Viral Awareness & Reach', desc: 'Tiếp cận lượng lớn khách hàng trẻ (Gen Z, Millennials) nhanh chóng thông qua các xu hướng (trends) và hashtag challenge.' },
-    { title: 'Community Engagement', desc: 'Khuyến khích người dùng sáng tạo nội dung (UGC - User Generated Content) tương tác trực tiếp với thương hiệu.' },
-    { title: 'Shoppertainment / E-commerce', desc: 'Thúc đẩy mua sắm kết hợp giải trí trực tiếp thông qua quảng cáo liền mạch dẫn về TikTok Shop (Livestream, Video Shopping).' },
-    { title: 'App Installs', desc: 'Cực kỳ hiệu quả khi quảng bá các ứng dụng giải trí, game, tiện ích với chi phí cài đặt (CPI) rất cạnh tranh.' },
+    { title: 'Nhận thức (Awareness)', desc: 'Phạm vi tiếp cận (Reach): Hiển thị quảng cáo với số người tối đa để xây dựng nhận biết thương hiệu nhanh chóng.' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Lưu lượng truy cập, Lượt xem video, và Tương tác với cộng đồng (Tăng người theo dõi, truy cập hồ sơ).' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Bán hàng (TikTok Shop/Web), Tạo khách hàng tiềm năng (Lead Generation) và Quảng cáo ứng dụng (App Installs).' },
 ];
 
 function ObjectivesTab() {

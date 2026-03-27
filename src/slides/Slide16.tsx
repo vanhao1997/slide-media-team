@@ -65,9 +65,9 @@ function BenchmarksTab() {
 }
 
 const objectives = [
-    { title: 'Massive Brand Awareness', desc: 'Xây dựng nhận diện thương hiệu mạnh mẽ và tiếp cận tệp người dùng khổng lồ thông qua các định dạng Video ngắn và dài.' },
-    { title: 'Product Consideration', desc: 'Sử dụng storytelling (kể chuyện) để giới thiệu tính năng sản phẩm một cách trực quan, giúp khách hàng cân nhắc trước khi mua.' },
-    { title: 'Drive Action & Leads', desc: 'Thúc đẩy chuyển đổi (mua hàng, để lại thông tin) thông qua Video Action Campaigns với nút kêu gọi hành động (CTA) nổi bật trên video.' },
+    { title: 'Nhận thức (Awareness)', desc: 'Mức độ nhận biết thương hiệu và Phạm vi tiếp cận thông qua định dạng Video Bumper (6s) hoặc Không thể bỏ qua (15s).' },
+    { title: 'Cân nhắc (Consideration)', desc: 'Sự cân nhắc về thương hiệu thông qua Video TrueView (Có thể bỏ qua) giúp kể câu chuyện thương hiệu chi tiết hơn.' },
+    { title: 'Chuyển đổi (Conversion)', desc: 'Thúc đẩy Doanh số, Khách hàng tiềm năng qua Video Action Campaigns (có nút Call-to-action điền form hoặc mua hàng).' },
 ];
 
 function ObjectivesTab() {
