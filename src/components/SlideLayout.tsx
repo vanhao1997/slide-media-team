@@ -125,7 +125,7 @@ export function SlideLayout({
                     }}
                 >
                     <img
-                        src="/p2p-logo.png"
+                        src={`${import.meta.env.BASE_URL}p2p-logo.png`}
                         alt="P2P Digital"
                         style={{
                             height: '32px',

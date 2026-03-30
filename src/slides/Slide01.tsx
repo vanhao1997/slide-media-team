@@ -32,7 +32,7 @@ export function Slide01() {
                     style={{ marginBottom: '32px' }}
                 >
                     <img
-                        src="/p2p-logo.png"
+                        src={`${import.meta.env.BASE_URL}p2p-logo.png`}
                         alt="P2P Digital"
                         style={{ height: '64px', objectFit: 'contain' }}
                     />
