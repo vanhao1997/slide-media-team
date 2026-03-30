@@ -10,6 +10,7 @@ export const theme = {
         whiteAlpha20: 'rgba(255, 255, 255, 0.2)',
         whiteAlpha40: 'rgba(255, 255, 255, 0.4)',
         whiteAlpha60: 'rgba(255, 255, 255, 0.6)',
+        whiteAlpha80: 'rgba(255, 255, 255, 0.8)',
         accentAlpha15: 'rgba(244, 205, 42, 0.15)',
         accentAlpha30: 'rgba(244, 205, 42, 0.3)',
         green: '#4CAF50',

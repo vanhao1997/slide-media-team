@@ -68,7 +68,7 @@ export function Slide26() {
 
                         {/* Connecting Arrow (except last one) */}
                         {i < funnelSteps.length - 1 && (
-                            <div style={{ position: 'absolute', right: '-10px', top: '50%', transform: 'translateY(-50%)', width: '20px', height: '20px', background: theme.colors.background, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
+                            <div style={{ position: 'absolute', right: '-10px', top: '50%', transform: 'translateY(-50%)', width: '20px', height: '20px', background: theme.colors.bg, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={theme.colors.whiteAlpha60} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M5 12h14M12 5l7 7-7 7" />
                                 </svg>
