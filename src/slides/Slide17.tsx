@@ -4,26 +4,26 @@ import { TabbedSlide } from '../components/TabbedSlide';
 const COLOR = '#FE2C55';
 
 const formats = [
-    { name: 'In-Feed Video', desc: 'Video 9:16, xuất hiện trong For You page', tip: 'Content-native, hook 3s, trending sound', perf: 'CTR: 0.5-2%, VVR: 5-15%' },
-    { name: 'TopView', desc: 'Video đầu tiên khi mở app, max 60s', tip: 'Massive reach, product launch', perf: 'CPM cao, nhưng impression đảm bảo' },
-    { name: 'Spark Ads', desc: 'Boost bài viết organic có sẵn', tip: 'Authentic hơn, engage tốt hơn ads thường 30%', perf: 'CTR cao hơn In-Feed 20-40%' },
-    { name: 'Branded Hashtag', desc: 'Challenge hashtag + banner trang Discover', tip: 'UGC campaign, viral effect', perf: 'Giá cố định, millions views' },
-    { name: 'Branded Effect', desc: 'AR filter / sticker tùy chỉnh', tip: 'Tương tác cao, creative engagement', perf: 'Usage rate: 5-15%' },
-    { name: 'TikTok Shop Ads', desc: 'Quảng cáo sản phẩm trong TikTok Shop', tip: 'E-commerce native, live shopping', perf: 'ROAS: 3-8x (ngành phù hợp)' },
+    { name: 'In-Feed Video', desc: 'Video dọc 9:16 trên For You page (có thể kèm Instant Form)', tip: 'Hook 3s đầu thật mạnh, không dùng video 16:9', perf: 'Phổ biến nhất, phù hợp nhiều mục tiêu' },
+    { name: 'Spark Ads', desc: 'Boost video organic (UGC) của Brand hoặc Creator', tip: 'Tỷ lệ tương tác cao hơn quảng cáo thường', perf: 'CTR 1-3%, hiệu quả tốt nhất' },
+    { name: 'TopView / Takeover', desc: 'Khởi chạy full-screen ngay khi mở app', tip: 'Reach siêu khủng, phù hợp chiến dịch Launching', perf: 'Reach tối đa, CPM cao' },
+    { name: 'Branded Effect', desc: 'Tạo filter AR 2D/3D hoặc sticker tương tác', tip: 'Khuyến khích UGC, tạo hiệu ứng viral', perf: 'Tương tác sâu, xây dựng cộng đồng' },
+    { name: 'Collection / Showcase', desc: 'Quảng cáo danh mục & trình diễn sản phẩm tự động', tip: 'Tối ưu bằng TikTok Pixel + Events API', perf: 'Chuyển đổi mạnh (Conversions)' },
+    { name: 'Playable Ad / Pangle', desc: 'Cho phép chơi thử game / phủ ra ngoài TikTok', tip: 'Thiết kế dành riêng cho mobile app & game', perf: 'Tối ưu CPI (Cài đặt ứng dụng)' },
 ];
 
 const benchmarks = [
-    { kpi: 'CPM', value: '20.000 - 60.000 VNĐ' },
-    { kpi: 'CPC', value: '1.000 - 5.000 VNĐ' },
-    { kpi: 'CTR', value: '0.5 - 2%' },
-    { kpi: 'Video View Rate', value: '5 - 15%' },
+    { kpi: 'CPM', value: '10.000 - 40.000 VNĐ' },
+    { kpi: 'CPC', value: '500 - 5.000 VNĐ' },
+    { kpi: 'CTR', value: '1.0% - 3.0%' },
+    { kpi: 'CPV', value: '100 - 500 VNĐ' },
 ];
 
 const tips = [
-    'Hook trong 3 giây đầu (thumb-stopping)',
-    'Music/Sound trending tăng engage gấp 2x',
-    'Spark Ads (boost bài có sẵn) thường hiệu quả hơn',
-    'Test 3-5 creative cùng lúc, kill kém sau 3 ngày',
+    'Ưu tiên Spark Ads (boost video UGC tự nhiên)',
+    'Hook 3 giây đầu quyết định 80% hiệu quả (bạo, chữ ngay)',
+    'Rotate ít nhất 3 video/tuần để tránh ad fatigue',
+    'Bắt đầu với Video Views trước khi chạy Conversion',
 ];
 
 function FormatsTab() {

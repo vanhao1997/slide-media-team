@@ -15,6 +15,7 @@ export { Slide14 } from './Slide14';
 export { Slide15 } from './Slide15';
 export { Slide16 } from './Slide16';
 export { Slide17 } from './Slide17';
+export { Slide17b } from './Slide17b';
 export { Slide18 } from './Slide18';
 export { Slide19 } from './Slide19';
 export { Slide20 } from './Slide20';
