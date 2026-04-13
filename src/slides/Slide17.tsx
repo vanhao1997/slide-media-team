@@ -4,12 +4,12 @@ import { TabbedSlide } from '../components/TabbedSlide';
 const COLOR = '#FE2C55';
 
 const formats = [
-    { name: 'In-Feed Video', desc: 'Video dọc 9:16 trên For You page (có thể kèm Instant Form)', tip: 'Hook 3s đầu thật mạnh, không dùng video 16:9', perf: 'Phổ biến nhất, phù hợp nhiều mục tiêu' },
-    { name: 'Spark Ads', desc: 'Boost video organic (UGC) của Brand hoặc Creator', tip: 'Tỷ lệ tương tác cao hơn quảng cáo thường', perf: 'CTR 1-3%, hiệu quả tốt nhất' },
-    { name: 'TopView / Takeover', desc: 'Khởi chạy full-screen ngay khi mở app', tip: 'Reach siêu khủng, phù hợp chiến dịch Launching', perf: 'Reach tối đa, CPM cao' },
-    { name: 'Branded Effect', desc: 'Tạo filter AR 2D/3D hoặc sticker tương tác', tip: 'Khuyến khích UGC, tạo hiệu ứng viral', perf: 'Tương tác sâu, xây dựng cộng đồng' },
-    { name: 'Collection / Showcase', desc: 'Quảng cáo danh mục & trình diễn sản phẩm tự động', tip: 'Tối ưu bằng TikTok Pixel + Events API', perf: 'Chuyển đổi mạnh (Conversions)' },
-    { name: 'Playable Ad / Pangle', desc: 'Cho phép chơi thử game / phủ ra ngoài TikTok', tip: 'Thiết kế dành riêng cho mobile app & game', perf: 'Tối ưu CPI (Cài đặt ứng dụng)' },
+    { name: 'In-Feed Video', desc: 'Video dọc 9:16 (15-60s) trên For You, bắt đầu bằng hook 3s', tip: 'Video native style (không quá "quảng cáo") hiệu quả hơn', perf: 'Tối ưu CPM, Reach, Traffic, Views' },
+    { name: 'Spark Ads', desc: 'Boost bài đăng organic (của brand hoặc KOL), giữ nguyên tương tác', tip: 'Ưu tiên sử dụng, tương tác cao hơn hẳn Dark Post (CTR >40-60%)', perf: 'CTR 1-3%, tương tác cực tốt' },
+    { name: 'In-Feed + Instant Form', desc: 'In-Feed Video kết hợp form điền trực tiếp trong app', tip: 'Form ngắn (Tên + SĐT là đủ). Video testimonial khách hàng', perf: 'Thu thập Lead không cần website' },
+    { name: 'Collection Ad', desc: 'Hiển thị video kèm các tile sản phẩm bên dưới', tip: 'Shopee/Lazada seller hoặc có Tiki/Web catalog', perf: 'Tối ưu Conversions, ROAS' },
+    { name: 'Dynamic Showcase (DPA)', desc: 'Tự động phân phối sản phẩm cá nhân hóa từ Catalog', tip: 'Retarget người đã xem sản phẩm hoặc Add to cart', perf: 'Tối ưu CVR và ROAS cực cao' },
+    { name: 'Playable / Pangle', desc: 'Quảng cáo dạng game mini hoặc trên Audience Network', tip: 'Optimize cho in-app actions thay vì chỉ install', perf: 'Tối ưu App Install (CPI)' },
 ];
 
 const benchmarks = [
@@ -20,23 +20,38 @@ const benchmarks = [
 ];
 
 const tips = [
-    'Ưu tiên Spark Ads (boost video UGC tự nhiên)',
-    'Hook 3 giây đầu quyết định 80% hiệu quả (bạo, chữ ngay)',
-    'Rotate ít nhất 3 video/tuần để tránh ad fatigue',
-    'Bắt đầu với Video Views trước khi chạy Conversion',
+    '🎬 Ưu tiên Spark Ads — tỷ lệ tương tác cao hơn hẳn Dark Post',
+    '⏱ Hook 3 giây đầu quyết định 80% — bắt đầu bạo, nhịp nhanh',
+    '🔄 Rotate ít nhất 3 video/tuần để tránh ad fatigue',
+    '🎯 Dùng Behavior Targeting kết hợp Custom Audience (Retargeting)',
+    '📊 Bắt đầu phễu bằng Video Views, sau đó retarget bằng Conversion',
+];
+
+const mistakes = [
+    '❌ Dùng video 16:9 — crop xấu xí, giảm hiệu quả',
+    '❌ Cố làm video quá bóng bẩy, saley — lướt qua ngay',
+    '❌ Dùng lại video dính watermark (Reels/Shorts)',
+    '❌ Ngân sách quá thấp (<200K/ngày) làm hệ thống không thể học',
+];
+
+const objectives = [
+    { title: 'Reach & Traffic', desc: 'Tối ưu phạm vi tiếp cận hoặc đưa người xem về website/landing page. (In-Feed Video, Spark Ads)' },
+    { title: 'Video Views & Community', desc: 'Tối đa lượt xem trọn vẹn và xây dựng cộng đồng followers, likes, comments.' },
+    { title: 'Lead Generation', desc: 'Thu thập thông tin (Tên, SĐT) qua form native trong app (Instant Form).' },
+    { title: 'Conversions & App Install', desc: 'Tối ưu ra đơn trên web, sàn TMĐT (Shopee/Lazada) hoặc tải và đăng ký in-app.' },
 ];
 
 function FormatsTab() {
     return (
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '8px' }}>
             {formats.map((f, i) => (
-                <div key={i} style={{ display: 'grid', gridTemplateColumns: '140px 1fr 1fr', gap: '16px', padding: '10px 0', borderBottom: `1px solid ${theme.colors.whiteAlpha10}` }}>
+                <div key={i} style={{ display: 'grid', gridTemplateColumns: '150px 1fr 1fr', gap: '16px', padding: '12px 10px', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent', borderRadius: '4px' }}>
                     <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: COLOR, fontWeight: 700 }}>{f.name}</div>
                     <div>
-                        <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.white }}>{f.desc}</div>
-                        <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.green, marginTop: '2px' }}>{f.perf}</div>
+                        <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.white, marginBottom: '4px' }}>{f.desc}</div>
+                        <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.green }}>✓ {f.perf}</div>
                     </div>
-                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha60 }}>💡 {f.tip}</div>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha60, fontStyle: 'italic', display: 'flex', alignItems: 'center' }}>💡 {f.tip}</div>
                 </div>
             ))}
         </div>
@@ -45,35 +60,43 @@ function FormatsTab() {
 
 function BenchmarksTab() {
     return (
-        <div style={{ display: 'flex', gap: '40px' }}>
-            <div style={{ flex: 1 }}>
-                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', marginBottom: '12px' }}>Benchmark VN</div>
-                {benchmarks.map((b, i) => (
-                    <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '12px 0', borderBottom: `1px solid ${theme.colors.whiteAlpha10}` }}>
-                        <span style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.accent, fontWeight: 600 }}>{b.kpi}</span>
-                        <span style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.white }}>{b.value}</span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div style={{ display: 'flex', gap: '40px' }}>
+                <div style={{ flex: 1 }}>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', marginBottom: '8px' }}>Benchmark VN</div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                        {benchmarks.map((b, i) => (
+                            <div key={i} style={{ padding: '10px', background: 'rgba(255,255,255,0.05)', borderRadius: '6px' }}>
+                                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.accent, fontWeight: 700 }}>{b.kpi}</div>
+                                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.white }}>{b.value}</div>
+                            </div>
+                        ))}
                     </div>
-                ))}
+                </div>
+                <div style={{ flex: 1 }}>
+                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', marginBottom: '8px' }}>Sai lầm thường gặp</div>
+                    <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                        {mistakes.map((m, i) => (
+                            <li key={i} style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.white, background: 'rgba(255,0,0,0.08)', padding: '6px 10px', borderRadius: '4px', borderLeft: '2px solid #FE2C55' }}>{m}</li>
+                        ))}
+                    </ul>
+                </div>
             </div>
-            <div style={{ flex: 1 }}>
-                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', marginBottom: '12px' }}>Tips tối ưu</div>
-                {tips.map((t, i) => (
-                    <div key={i} style={{ padding: '10px 16px', marginBottom: '8px', borderLeft: `2px solid ${COLOR}`, fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.white, lineHeight: 1.5 }}>{t}</div>
-                ))}
+            <div>
+                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', marginBottom: '8px' }}>Tips tối ưu (Best Practices)</div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                    {tips.map((t, i) => (
+                        <div key={i} style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha80, background: 'rgba(255,255,255,0.03)', padding: '8px 12px', borderRadius: '4px' }}>{t}</div>
+                    ))}
+                </div>
             </div>
         </div>
     );
 }
 
-const objectives = [
-    { title: 'Nhận thức (Awareness)', desc: 'Mục tiêu: Reach (Phạm vi tiếp cận). Hiển thị quảng cáo với số người tối đa để xây dựng nhận biết thương hiệu nhanh chóng.' },
-    { title: 'Cân nhắc (Consideration)', desc: 'Mục tiêu: Traffic (Lưu lượng truy cập), Video Views (Lượt xem video), Community Interaction (Tương tác cộng đồng/Follower).' },
-    { title: 'Chuyển đổi (Conversion)', desc: 'Mục tiêu: App Promotion (Cài đặt ứng dụng), Lead Generation (Tạo KH tiềm năng), Shop Purchases (Bán hàng).' },
-];
-
 function ObjectivesTab() {
     return (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignContent: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
             {objectives.map((obj, i) => (
                 <div key={i} style={{ padding: '24px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', borderLeft: `4px solid ${COLOR}` }}>
                     <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.lg, color: theme.colors.white, fontWeight: 700, marginBottom: '12px' }}>{obj.title}</div>
