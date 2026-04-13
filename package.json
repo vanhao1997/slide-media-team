@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm install @rolldown/binding-linux-x64-gnu --no-save --force --os=linux --cpu=x64 && tsc -b && vite build",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -17,6 +17,9 @@
     "react-dom": "^19.2.4",
     "recharts": "^3.8.1",
     "tailwindcss": "^4.2.2"
+  },
+  "optionalDependencies": {
+    "@rolldown/binding-linux-x64-gnu": "*"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
