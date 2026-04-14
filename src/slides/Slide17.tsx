@@ -1,122 +1,237 @@
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { fadeUp, fadeIn } from '../lib/animations';
 import { theme } from '../lib/theme';
-import { TabbedSlide } from '../components/TabbedSlide';
 
 const COLOR = '#FE2C55';
 
-const formats = [
-    { name: 'In-Feed Video', desc: 'Video dọc 9:16 (15-60s) trên For You, bắt đầu bằng hook 3s', tip: 'Video native style (không quá "quảng cáo") hiệu quả hơn', perf: 'Tối ưu CPM, Reach, Traffic, Views' },
-    { name: 'Spark Ads', desc: 'Boost bài đăng organic (của brand hoặc KOL), giữ nguyên tương tác', tip: 'Ưu tiên sử dụng, tương tác cao hơn hẳn Dark Post (CTR >40-60%)', perf: 'CTR 1-3%, tương tác cực tốt' },
-    { name: 'In-Feed + Instant Form', desc: 'In-Feed Video kết hợp form điền trực tiếp trong app', tip: 'Form ngắn (Tên + SĐT là đủ). Video testimonial khách hàng', perf: 'Thu thập Lead không cần website' },
-    { name: 'Collection Ad', desc: 'Hiển thị video kèm các tile sản phẩm bên dưới', tip: 'Shopee/Lazada seller hoặc có Tiki/Web catalog', perf: 'Tối ưu Conversions, ROAS' },
-    { name: 'Dynamic Showcase (DPA)', desc: 'Tự động phân phối sản phẩm cá nhân hóa từ Catalog', tip: 'Retarget người đã xem sản phẩm hoặc Add to cart', perf: 'Tối ưu CVR và ROAS cực cao' },
-    { name: 'Playable / Pangle', desc: 'Quảng cáo dạng game mini hoặc trên Audience Network', tip: 'Optimize cho in-app actions thay vì chỉ install', perf: 'Tối ưu App Install (CPI)' },
+/* ── Funnel data from MediaGuide platforms.json ── */
+const funnelStages = [
+    {
+        stage: 'TOFU',
+        label: 'AWARENESS (NHẬN BIẾT)',
+        color: '#4A90D9',
+        objectives: [
+            {
+                name: 'Reach (Tiếp cận)',
+                color: '#4A90D9',
+                formats: ['In-Feed Video', 'TopView', 'Brand Takeover', 'Branded Effect'],
+                metrics: ['Reach', 'Impressions', 'CPM', 'Frequency'],
+                bestPractices: [
+                    'TopView đạt reach cao nhất (full-screen khi mở app)',
+                    'Video native style (không quá "quảng cáo") hiệu quả hơn',
+                    'Tận dụng trending sound và hashtag',
+                ],
+            },
+        ],
+    },
+    {
+        stage: 'MOFU',
+        label: 'CONSIDERATION (CÂN NHẮC)',
+        color: '#9B59B6',
+        objectives: [
+            {
+                name: 'Traffic (Lưu lượng)',
+                color: '#27AE60',
+                formats: ['In-Feed Video', 'Spark Ads'],
+                metrics: ['Clicks', 'CTR', 'CPC', 'Landing Page Views'],
+                bestPractices: [
+                    'Hook 3 giây đầu phải gây tò mò',
+                    'CTA rõ ràng ở cuối video + nút CTA',
+                    'Spark Ads từ bài organic đã viral có CTR cao',
+                ],
+            },
+            {
+                name: 'Video Views (Lượt xem video)',
+                color: '#8E44AD',
+                formats: ['In-Feed Video', 'Spark Ads'],
+                metrics: ['Video Views (2s/6s/full)', 'View Rate', 'Avg Watch Time', 'CPV'],
+                bestPractices: [
+                    'Video 15-30 giây có watch-through rate tốt nhất',
+                    'Phụ đề tiếng Việt bắt buộc',
+                    'UGC style có completion rate cao hơn studio content',
+                ],
+            },
+            {
+                name: 'Community Interaction (Tương tác)',
+                color: '#6C5CE7',
+                formats: ['In-Feed Video', 'Spark Ads'],
+                metrics: ['Followers', 'Likes', 'Comments', 'Shares', 'Profile Visits'],
+                bestPractices: [
+                    'Nội dung series (nhiều tập) giữ chân followers',
+                    'Reply comment bằng video để tăng engagement',
+                    'Hashtag challenge khuyến khích UGC',
+                ],
+            },
+        ],
+    },
+    {
+        stage: 'BOFU',
+        label: 'CONVERSION (CHUYỂN ĐỔI)',
+        color: '#E67E22',
+        objectives: [
+            {
+                name: 'Lead Generation (Thu thập lead)',
+                color: '#27AE60',
+                formats: ['In-Feed Video + Instant Form'],
+                metrics: ['Leads', 'CPL', 'Form Open Rate', 'Form Submit Rate'],
+                bestPractices: [
+                    'Form ngắn: tên + SĐT là đủ',
+                    'Video testimonial khách hàng = lead chất lượng hơn',
+                    'Thank you page có CTA tiếp theo',
+                ],
+            },
+            {
+                name: 'Conversions (Chuyển đổi)',
+                color: '#E74C3C',
+                formats: ['In-Feed Video', 'Spark Ads', 'Collection Ad', 'Dynamic Showcase Ad'],
+                metrics: ['Conversions', 'CVR', 'CPA', 'ROAS', 'Add to Cart'],
+                bestPractices: [
+                    'Cài TikTok Pixel + Events API',
+                    'Product demo + review = conversion cao',
+                    'Retarget người đã tương tác video',
+                ],
+            },
+            {
+                name: 'App Install (Cài đặt ứng dụng)',
+                color: '#F39C12',
+                formats: ['In-Feed Video', 'Spark Ads', 'Playable Ad', 'Pangle'],
+                metrics: ['App Installs', 'CPI', 'In-app Events', 'ROAS', 'Retention D1/D7'],
+                bestPractices: [
+                    'Video demo gameplay 15-30s — UGC style hiệu quả hơn',
+                    'Cài TikTok SDK trong app để track post-install events',
+                    'Optimize cho in-app actions thay vì chỉ install',
+                ],
+            },
+        ],
+    },
 ];
 
-const benchmarks = [
-    { kpi: 'CPM', value: '10.000 - 40.000 VNĐ' },
-    { kpi: 'CPC', value: '500 - 5.000 VNĐ' },
-    { kpi: 'CTR', value: '1.0% - 3.0%' },
-    { kpi: 'CPV', value: '100 - 500 VNĐ' },
-];
-
-const tips = [
-    '🎬 Ưu tiên Spark Ads — tỷ lệ tương tác cao hơn hẳn Dark Post',
-    '⏱ Hook 3 giây đầu quyết định 80% — bắt đầu bạo, nhịp nhanh',
-    '🔄 Rotate ít nhất 3 video/tuần để tránh ad fatigue',
-    '🎯 Dùng Behavior Targeting kết hợp Custom Audience (Retargeting)',
-    '📊 Bắt đầu phễu bằng Video Views, sau đó retarget bằng Conversion',
-];
-
-const mistakes = [
-    '❌ Dùng video 16:9 — crop xấu xí, giảm hiệu quả',
-    '❌ Cố làm video quá bóng bẩy, saley — lướt qua ngay',
-    '❌ Dùng lại video dính watermark (Reels/Shorts)',
-    '❌ Ngân sách quá thấp (<200K/ngày) làm hệ thống không thể học',
-];
-
-const objectives = [
-    { title: 'Reach & Traffic', desc: 'Tối ưu phạm vi tiếp cận hoặc đưa người xem về website/landing page. (In-Feed Video, Spark Ads)' },
-    { title: 'Video Views & Community', desc: 'Tối đa lượt xem trọn vẹn và xây dựng cộng đồng followers, likes, comments.' },
-    { title: 'Lead Generation', desc: 'Thu thập thông tin (Tên, SĐT) qua form native trong app (Instant Form).' },
-    { title: 'Conversions & App Install', desc: 'Tối ưu ra đơn trên web, sàn TMĐT (Shopee/Lazada) hoặc tải và đăng ký in-app.' },
-];
-
-function FormatsTab() {
+/* ── Expandable Objective Row ── */
+function ObjectiveRow({ obj, delay }: { obj: typeof funnelStages[0]['objectives'][0]; delay: number }) {
+    const [open, setOpen] = useState(false);
     return (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '8px' }}>
-            {formats.map((f, i) => (
-                <div key={i} style={{ display: 'grid', gridTemplateColumns: '150px 1fr 1fr', gap: '16px', padding: '12px 10px', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent', borderRadius: '4px' }}>
-                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: COLOR, fontWeight: 700 }}>{f.name}</div>
-                    <div>
-                        <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.white, marginBottom: '4px' }}>{f.desc}</div>
-                        <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.green }}>✓ {f.perf}</div>
-                    </div>
-                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha60, fontStyle: 'italic', display: 'flex', alignItems: 'center' }}>💡 {f.tip}</div>
+        <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay }}>
+            <div
+                onClick={(e) => { e.stopPropagation(); setOpen(!open); }}
+                style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    padding: '12px 16px', cursor: 'pointer', borderRadius: '6px',
+                    background: open ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.02)',
+                    transition: 'background 0.2s', marginBottom: '4px',
+                }}
+            >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: obj.color, flexShrink: 0 }} />
+                    <span style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.white, fontWeight: 500 }}>{obj.name}</span>
                 </div>
-            ))}
-        </div>
-    );
-}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    <span style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha40 }}>
+                        {obj.formats.length} formats · {obj.metrics.length} metrics
+                    </span>
+                    <span style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha40, transition: 'transform 0.2s', transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}>▾</span>
+                </div>
+            </div>
 
-function BenchmarksTab() {
-    return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <div style={{ display: 'flex', gap: '40px' }}>
-                <div style={{ flex: 1 }}>
-                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', marginBottom: '8px' }}>Benchmark VN</div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                        {benchmarks.map((b, i) => (
-                            <div key={i} style={{ padding: '10px', background: 'rgba(255,255,255,0.05)', borderRadius: '6px' }}>
-                                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.accent, fontWeight: 700 }}>{b.kpi}</div>
-                                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.white }}>{b.value}</div>
+            <AnimatePresence>
+                {open && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+                        style={{ overflow: 'hidden', paddingLeft: '28px', paddingRight: '16px' }}
+                    >
+                        <div style={{ display: 'flex', gap: '24px', padding: '12px 0 8px' }}>
+                            <div style={{ flex: 1 }}>
+                                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', marginBottom: '6px' }}>Ad Formats</div>
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                                    {obj.formats.map((f, i) => (
+                                        <span key={i} style={{
+                                            fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs,
+                                            color: COLOR, background: `${COLOR}18`, padding: '3px 10px',
+                                            borderRadius: '12px', border: `1px solid ${COLOR}30`,
+                                        }}>{f}</span>
+                                    ))}
+                                </div>
                             </div>
-                        ))}
-                    </div>
-                </div>
-                <div style={{ flex: 1 }}>
-                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', marginBottom: '8px' }}>Sai lầm thường gặp</div>
-                    <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                        {mistakes.map((m, i) => (
-                            <li key={i} style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.white, background: 'rgba(255,0,0,0.08)', padding: '6px 10px', borderRadius: '4px', borderLeft: '2px solid #FE2C55' }}>{m}</li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-            <div>
-                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', marginBottom: '8px' }}>Tips tối ưu (Best Practices)</div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-                    {tips.map((t, i) => (
-                        <div key={i} style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha80, background: 'rgba(255,255,255,0.03)', padding: '8px 12px', borderRadius: '4px' }}>{t}</div>
-                    ))}
-                </div>
-            </div>
-        </div>
+                            <div style={{ flex: 1 }}>
+                                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', marginBottom: '6px' }}>Metrics</div>
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                                    {obj.metrics.map((m, i) => (
+                                        <span key={i} style={{
+                                            fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs,
+                                            color: theme.colors.accent, background: 'rgba(255,255,255,0.05)', padding: '3px 10px',
+                                            borderRadius: '12px',
+                                        }}>{m}</span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{ paddingBottom: '10px' }}>
+                            <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', marginBottom: '6px' }}>Best Practices</div>
+                            {obj.bestPractices.map((bp, i) => (
+                                <div key={i} style={{
+                                    fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs,
+                                    color: theme.colors.whiteAlpha60, padding: '3px 0', paddingLeft: '10px',
+                                    borderLeft: `2px solid ${obj.color}30`,
+                                }}>💡 {bp}</div>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </motion.div>
     );
 }
 
-function ObjectivesTab() {
-    return (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-            {objectives.map((obj, i) => (
-                <div key={i} style={{ padding: '24px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', borderLeft: `4px solid ${COLOR}` }}>
-                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.lg, color: theme.colors.white, fontWeight: 700, marginBottom: '12px' }}>{obj.title}</div>
-                    <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.whiteAlpha60, lineHeight: 1.6 }}>{obj.desc}</div>
-                </div>
-            ))}
-        </div>
-    );
-}
-
+/* ── Main Slide ── */
 export function Slide17() {
     return (
-        <TabbedSlide
-            subtitle="TikTok Ads"
-            title='<span style="color: #FE2C55">TikTok Ads</span> — Ad Formats & Benchmark'
-            tabs={[
-                { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
-                { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },
-                { label: 'Benchmark & Tips', color: COLOR, content: <BenchmarksTab /> },
-            ]}
-        />
+        <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', padding: '40px 60px' }}>
+            {/* Header */}
+            <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={0}
+                style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, fontWeight: 600, color: COLOR, letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '6px' }}>
+                TikTok Ads
+            </motion.div>
+            <motion.h2 variants={fadeUp} initial="hidden" animate="visible" custom={0}
+                style={{ fontFamily: theme.fonts.display, fontSize: theme.fontSizes['2xl'], fontWeight: 800, color: theme.colors.white, marginBottom: '16px' }}>
+                Nền tảng & Định dạng — <span style={{ color: COLOR }}>Theo mục tiêu quảng cáo</span>
+            </motion.h2>
+
+            {/* Legend */}
+            <div style={{ display: 'flex', gap: '20px', marginBottom: '16px' }}>
+                {funnelStages.map((s) => (
+                    <div key={s.stage} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: s.color }} />
+                        <span style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha60 }}>{s.stage}</span>
+                    </div>
+                ))}
+            </div>
+
+            {/* Funnel stages */}
+            <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {funnelStages.map((stage) => (
+                    <div key={stage.stage}>
+                        <div style={{
+                            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                            padding: '8px 0', borderBottom: `1px solid ${theme.colors.whiteAlpha10}`, marginBottom: '6px',
+                        }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <div style={{ width: 10, height: 10, borderRadius: '50%', background: stage.color }} />
+                                <span style={{
+                                    fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, fontWeight: 800,
+                                    color: theme.colors.white, textTransform: 'uppercase', letterSpacing: '1px',
+                                }}>{stage.stage} — {stage.label}</span>
+                            </div>
+                            <span style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha40 }}>
+                                {stage.objectives.length} mục tiêu
+                            </span>
+                        </div>
+
+                        {stage.objectives.map((obj, j) => (
+                            <ObjectiveRow key={obj.name} obj={obj} delay={j * 0.06} />
+                        ))}
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 }
