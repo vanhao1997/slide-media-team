@@ -7,6 +7,7 @@ RUN npm run build
 
 FROM nginx:alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html/learning/slide-media-team
 COPY <<'EOF' /etc/nginx/conf.d/default.conf
 server {
     listen 80;
@@ -16,6 +17,10 @@ server {
 
     location / {
         try_files $uri $uri/ /index.html;
+    }
+
+    location /learning/slide-media-team/ {
+        try_files $uri $uri/ /learning/slide-media-team/index.html;
     }
 }
 EOF
