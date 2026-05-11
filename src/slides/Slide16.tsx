@@ -83,11 +83,14 @@ function ObjectivesTab() {
     );
 }
 
-export function Slide16() {
+export function Slide16({ tabIndex }: { tabIndex?: number }) {
+    const staticMode = tabIndex !== undefined;
     return (
         <TabbedSlide
             subtitle="YouTube Ads"
-            title='<span style="color: #FF0000">YouTube Ads</span> — Ad Formats & Benchmark'
+            title={<><span style={{ color: COLOR }}>YouTube Ads</span> — Ad Formats & Benchmark</>}
+            activeTab={tabIndex}
+            staticMode={staticMode}
             tabs={[
                 { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },

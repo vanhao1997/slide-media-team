@@ -390,10 +390,10 @@
 
 ---
 
-### Slide 27 — Content Format Guide (Interactive)
+### Slide 27 — Content Format Guide (Remote-friendly)
 **⏱ ~1.5 phút**
 
-> *(Click qua các tab: Brand Awareness, Lead Generation, E-commerce)*
+> *(Bấm Next để đi lần lượt qua Brand Awareness, Lead Generation, E-commerce)*
 >
 > Slide này giúp Account **chọn đúng định dạng quảng cáo** theo mục tiêu:
 >

@@ -17,7 +17,7 @@ export function Slide32() {
                 </motion.h1>
                 <motion.p variants={fadeUp} initial="hidden" animate="visible" custom={2}
                     style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.lg, color: theme.colors.whiteAlpha60, maxWidth: '380px', lineHeight: 1.6 }}>
-                    Hãy áp dụng những kiến thức này khi tư vấn khách hàng nhé!
+                    Khi nhận brief mới, hãy mở MediaGuide để map mục tiêu, chọn kênh, check tracking và chuẩn bị câu hỏi cho client.
                 </motion.p>
             </div>
 
@@ -30,7 +30,7 @@ export function Slide32() {
                     <div style={{ fontFamily: theme.fonts.display, fontSize: 'clamp(50px, 7vw, 80px)', fontWeight: 900, color: theme.colors.bg, lineHeight: 1, opacity: 0.15, position: 'absolute', top: '20px', right: '28px' }}>Q&A</div>
                     <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.bg, lineHeight: 1.6 }}>
                         <strong>Câu hỏi? Thắc mắc?</strong><br />
-                        <span style={{ opacity: 0.7 }}>Let's discuss! 🚀</span>
+                        <span style={{ opacity: 0.7 }}>Mở MediaGuide và thực hành với một brief thật.</span>
                     </div>
                 </div>
             </motion.div>

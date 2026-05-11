@@ -83,11 +83,14 @@ function ObjectivesTab() {
     );
 }
 
-export function Slide18() {
+export function Slide18({ tabIndex }: { tabIndex?: number }) {
+    const staticMode = tabIndex !== undefined;
     return (
         <TabbedSlide
             subtitle="Zalo Ads"
-            title='<span style="color: #0068FF">Zalo Ads</span> — Ad Formats & Benchmark'
+            title={<><span style={{ color: COLOR }}>Zalo Ads</span> — Ad Formats & Benchmark</>}
+            activeTab={tabIndex}
+            staticMode={staticMode}
             tabs={[
                 { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },

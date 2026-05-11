@@ -84,11 +84,14 @@ function ObjectivesTab() {
     );
 }
 
-export function Slide20() {
+export function Slide20({ tabIndex }: { tabIndex?: number }) {
+    const staticMode = tabIndex !== undefined;
     return (
         <TabbedSlide
             subtitle="LinkedIn Ads"
-            title='<span style="color: #0A66C2">LinkedIn Ads</span> — Ad Formats & Benchmark'
+            title={<><span style={{ color: COLOR }}>LinkedIn Ads</span> — Ad Formats & Benchmark</>}
+            activeTab={tabIndex}
+            staticMode={staticMode}
             tabs={[
                 { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },

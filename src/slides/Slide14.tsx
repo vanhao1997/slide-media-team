@@ -82,11 +82,14 @@ function ObjectivesTab() {
     );
 }
 
-export function Slide14() {
+export function Slide14({ tabIndex }: { tabIndex?: number }) {
+    const staticMode = tabIndex !== undefined;
     return (
         <TabbedSlide
             subtitle="Google Search Ads"
-            title='<span style="color: #34A853">Google Search</span> — Ad Formats & Benchmark'
+            title={<><span style={{ color: COLOR }}>Google Search</span> — Ad Formats & Benchmark</>}
+            activeTab={tabIndex}
+            staticMode={staticMode}
             tabs={[
                 { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },

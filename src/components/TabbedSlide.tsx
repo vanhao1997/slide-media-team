@@ -1,25 +1,30 @@
 import { useState } from 'react';
+import type { ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { theme } from '../lib/theme';
 
 interface Tab {
     label: string;
     color?: string;
-    content: React.ReactNode;
+    content: ReactNode;
 }
 
 interface TabbedSlideProps {
     tabs: Tab[];
-    title?: string;
+    title?: ReactNode;
     subtitle?: string;
+    activeTab?: number;
+    staticMode?: boolean;
 }
 
-export function TabbedSlide({ tabs, title, subtitle }: TabbedSlideProps) {
-    const [activeTab, setActiveTab] = useState(0);
+export function TabbedSlide({ tabs, title, subtitle, activeTab: controlledActiveTab, staticMode = false }: TabbedSlideProps) {
+    const [internalActiveTab, setInternalActiveTab] = useState(0);
+    const activeTab = Math.min(controlledActiveTab ?? internalActiveTab, tabs.length - 1);
 
     const handleTabClick = (index: number, e: React.MouseEvent) => {
+        if (staticMode) return;
         e.stopPropagation();
-        setActiveTab(index);
+        setInternalActiveTab(index);
     };
 
     return (
@@ -56,11 +61,12 @@ export function TabbedSlide({ tabs, title, subtitle }: TabbedSlideProps) {
                         fontWeight: 800,
                         marginBottom: '24px',
                     }}
-                    dangerouslySetInnerHTML={{ __html: title }}
-                />
+                >
+                    {title}
+                </h2>
             )}
 
-            {/* Tab bar */}
+            {/* Tab/state bar */}
             <div
                 style={{
                     display: 'flex',
@@ -70,28 +76,59 @@ export function TabbedSlide({ tabs, title, subtitle }: TabbedSlideProps) {
                     paddingBottom: '0',
                 }}
             >
-                {tabs.map((tab, i) => (
-                    <button
-                        key={i}
-                        onClick={(e) => handleTabClick(i, e)}
+                {staticMode ? (
+                    <div
                         style={{
                             fontFamily: theme.fonts.body,
                             fontSize: theme.fontSizes.sm,
-                            fontWeight: activeTab === i ? 700 : 400,
-                            color: activeTab === i ? (tab.color || theme.colors.accent) : theme.colors.whiteAlpha40,
-                            background: activeTab === i ? theme.colors.whiteAlpha10 : 'transparent',
-                            border: 'none',
-                            borderBottom: activeTab === i ? `2px solid ${tab.color || theme.colors.accent}` : '2px solid transparent',
+                            fontWeight: 800,
+                            color: tabs[activeTab].color || theme.colors.accent,
+                            background: theme.colors.whiteAlpha10,
+                            borderBottom: `2px solid ${tabs[activeTab].color || theme.colors.accent}`,
                             padding: '10px 20px',
-                            cursor: 'pointer',
-                            transition: 'all 0.2s',
                             borderRadius: '4px 4px 0 0',
                         }}
                     >
-                        {tab.label}
-                    </button>
-                ))}
+                        {tabs[activeTab].label}
+                    </div>
+                ) : (
+                    tabs.map((tab, i) => (
+                        <button
+                            key={i}
+                            onClick={(e) => handleTabClick(i, e)}
+                            style={{
+                                fontFamily: theme.fonts.body,
+                                fontSize: theme.fontSizes.sm,
+                                fontWeight: activeTab === i ? 700 : 400,
+                                color: activeTab === i ? (tab.color || theme.colors.accent) : theme.colors.whiteAlpha40,
+                                background: activeTab === i ? theme.colors.whiteAlpha10 : 'transparent',
+                                border: 'none',
+                                borderBottom: activeTab === i ? `2px solid ${tab.color || theme.colors.accent}` : '2px solid transparent',
+                                padding: '10px 20px',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s',
+                                borderRadius: '4px 4px 0 0',
+                            }}
+                        >
+                            {tab.label}
+                        </button>
+                    ))
+                )}
             </div>
+
+            {staticMode && (
+                <div
+                    style={{
+                        fontFamily: theme.fonts.body,
+                        fontSize: theme.fontSizes.xs,
+                        color: theme.colors.whiteAlpha40,
+                        marginTop: '-10px',
+                        marginBottom: '14px',
+                    }}
+                >
+                    Remote mode: bấm Next để sang phần tiếp theo
+                </div>
+            )}
 
             {/* Tab content */}
             <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>

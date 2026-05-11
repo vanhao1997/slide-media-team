@@ -1,5 +1,6 @@
 import { theme } from '../lib/theme';
-import { TabbedSlide } from '../components/TabbedSlide';
+import { motion } from 'framer-motion';
+import { fadeUp, fadeIn } from '../lib/animations';
 
 const platformData: Record<string, { strengths: string[]; bestFor: string; formats: string[] }> = {
     Meta: { strengths: ['Targeting chi tiết', 'Retargeting mạnh', 'Visual-first', 'Lookalike Audience'], bestFor: 'Awareness, Engagement, E-commerce', formats: ['Image, Video, Carousel, Collection, Stories/Reels, Lead Ads'] },
@@ -12,21 +13,26 @@ const platformData: Record<string, { strengths: string[]; bestFor: string; forma
     LinkedIn: { strengths: ['B2B targeting #1', 'Job title targeting', 'Professional context'], bestFor: 'B2B Lead Gen, Recruitment', formats: ['Sponsored Content, InMail, Text Ads, Video Ads'] },
 };
 
-function PlatformCard({ data, color }: { data: typeof platformData[string]; color: string }) {
+function PlatformCard({ name, data, color, index }: { name: string; data: typeof platformData[string]; color: string; index: number }) {
     return (
-        <div style={{ display: 'flex', gap: '40px', height: '100%', alignItems: 'flex-start' }}>
-            <div style={{ flex: 1 }}>
-                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' }}>Thế mạnh</div>
-                {data.strengths.map((s, i) => (
-                    <div key={i} style={{ padding: '8px 0', fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.white, borderBottom: `1px solid ${theme.colors.whiteAlpha10}` }}>→ {s}</div>
-                ))}
+        <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={index + 1}
+            style={{ background: theme.colors.whiteAlpha10, borderLeft: `4px solid ${color}`, borderRadius: '0 4px 4px 0', padding: '16px', minHeight: '150px' }}>
+            <div style={{ fontFamily: theme.fonts.display, fontSize: theme.fontSizes.lg, color, fontWeight: 900, marginBottom: '8px' }}>
+                {name}
             </div>
-            <div style={{ flex: 1 }}>
-                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' }}>Ad Formats</div>
-                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.base, color: theme.colors.white, lineHeight: 1.8 }}>{data.formats.join(', ')}</div>
-                <div style={{ marginTop: '20px', padding: '12px 16px', background: `${color}15`, borderRadius: '4px', fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color }}>🎯 Best for: {data.bestFor}</div>
+            <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '6px', fontWeight: 800 }}>
+                Best for
             </div>
-        </div>
+            <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.white, lineHeight: 1.35, marginBottom: '10px', fontWeight: 700 }}>
+                {data.bestFor}
+            </div>
+            <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '6px', fontWeight: 800 }}>
+                Formats
+            </div>
+            <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha60, lineHeight: 1.35 }}>
+                {data.formats.join(', ')}
+            </div>
+        </motion.div>
     );
 }
 
@@ -36,17 +42,22 @@ const colors: Record<string, string> = {
 };
 
 export function Slide12() {
-    const tabs = Object.entries(platformData).map(([name, data]) => ({
-        label: name,
-        color: colors[name],
-        content: <PlatformCard data={data} color={colors[name]} />,
-    }));
-
     return (
-        <TabbedSlide
-            subtitle="Platforms Overview"
-            title='Tất cả nền tảng — <span style="color: #FF5722">Click tab để xem chi tiết</span>'
-            tabs={tabs}
-        />
+        <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', padding: '46px 68px' }}>
+            <motion.div variants={fadeIn} initial="hidden" animate="visible" custom={0}
+                style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, fontWeight: 700, color: theme.colors.accent, letterSpacing: '3px', textTransform: 'uppercase', marginBottom: '8px' }}>
+                Platforms Overview
+            </motion.div>
+            <motion.h2 variants={fadeUp} initial="hidden" animate="visible" custom={0}
+                style={{ fontFamily: theme.fonts.display, fontSize: theme.fontSizes['2xl'], fontWeight: 900, color: theme.colors.white, marginBottom: '20px' }}>
+                8 nền tảng — <span style={{ color: theme.colors.accent }}>bấm Next để đi vào chi tiết</span>
+            </motion.h2>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px', flex: 1, minHeight: 0 }}>
+                {Object.entries(platformData).map(([name, data], index) => (
+                    <PlatformCard key={name} name={name} data={data} color={colors[name]} index={index} />
+                ))}
+            </div>
+        </div>
     );
 }

@@ -33,8 +33,10 @@ const cheatsheet = [
     },
 ];
 
-export function Slide31() {
-    const [active, setActive] = useState(0);
+export function Slide31({ activeIndex }: { activeIndex?: number }) {
+    const [internalActive, setActive] = useState(0);
+    const staticMode = activeIndex !== undefined;
+    const active = activeIndex ?? internalActive;
 
     return (
         <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', padding: '50px 70px' }}>
@@ -49,16 +51,29 @@ export function Slide31() {
 
             <div style={{ display: 'flex', gap: '8px', marginBottom: '20px' }}>
                 {cheatsheet.map((c, i) => (
-                    <button key={i} onClick={(e) => { e.stopPropagation(); setActive(i); }}
-                        style={{
-                            fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, fontWeight: active === i ? 700 : 400,
-                            color: active === i ? c.color : theme.colors.whiteAlpha40,
-                            background: active === i ? `${c.color}15` : 'transparent',
-                            border: `1px solid ${active === i ? c.color : theme.colors.whiteAlpha10}`,
-                            padding: '10px 24px', cursor: 'pointer', borderRadius: '4px', transition: 'all 0.2s',
-                        }}>
-                        {c.category}
-                    </button>
+                    staticMode ? (
+                        <div key={i}
+                            style={{
+                                fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, fontWeight: active === i ? 800 : 500,
+                                color: active === i ? c.color : theme.colors.whiteAlpha40,
+                                background: active === i ? `${c.color}15` : 'transparent',
+                                border: `1px solid ${active === i ? c.color : theme.colors.whiteAlpha10}`,
+                                padding: '10px 24px', borderRadius: '4px',
+                            }}>
+                            {c.category}
+                        </div>
+                    ) : (
+                        <button key={i} onClick={(e) => { e.stopPropagation(); setActive(i); }}
+                            style={{
+                                fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, fontWeight: active === i ? 700 : 400,
+                                color: active === i ? c.color : theme.colors.whiteAlpha40,
+                                background: active === i ? `${c.color}15` : 'transparent',
+                                border: `1px solid ${active === i ? c.color : theme.colors.whiteAlpha10}`,
+                                padding: '10px 24px', cursor: 'pointer', borderRadius: '4px', transition: 'all 0.2s',
+                            }}>
+                            {c.category}
+                        </button>
+                    )
                 ))}
             </div>
 

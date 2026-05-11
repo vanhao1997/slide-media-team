@@ -3,8 +3,8 @@
 
 :root {
   --color-bg: #1a1a1a;
-  --color-accent: #FF5722;
-  --color-accent-light: #FF8A65;
+  --color-accent: #F4CD2A;
+  --color-accent-light: #FDE047;
   --color-text: #ffffff;
   --color-muted: rgba(255, 255, 255, 0.5);
   --font-display: 'Montserrat', sans-serif;
@@ -29,7 +29,7 @@ body,
 }
 
 ::selection {
-  background: #FF5722;
+  background: #F4CD2A;
   color: #1a1a1a;
 }
 
@@ -43,6 +43,6 @@ body,
 
 /* Subtle dot pattern */
 .dot-pattern {
-  background-image: radial-gradient(circle, rgba(255, 87, 34, 0.08) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(244, 205, 42, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
 }

@@ -108,16 +108,17 @@ const funnelStages = [
 ];
 
 /* ── Expandable Objective Row ── */
-function ObjectiveRow({ obj, delay }: { obj: typeof funnelStages[0]['objectives'][0]; delay: number }) {
+function ObjectiveRow({ obj, delay, forceOpen = false }: { obj: typeof funnelStages[0]['objectives'][0]; delay: number; forceOpen?: boolean }) {
     const [open, setOpen] = useState(false);
+    const isOpen = forceOpen || open;
     return (
         <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay }}>
             <div
-                onClick={(e) => { e.stopPropagation(); setOpen(!open); }}
+                onClick={(e) => { if (forceOpen) return; e.stopPropagation(); setOpen(!open); }}
                 style={{
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                    padding: '12px 16px', cursor: 'pointer', borderRadius: '6px',
-                    background: open ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.02)',
+                    padding: '12px 16px', cursor: forceOpen ? 'default' : 'pointer', borderRadius: '6px',
+                    background: isOpen ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.02)',
                     transition: 'background 0.2s', marginBottom: '4px',
                 }}
             >
@@ -129,12 +130,14 @@ function ObjectiveRow({ obj, delay }: { obj: typeof funnelStages[0]['objectives'
                     <span style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha40 }}>
                         {obj.formats.length} formats · {obj.metrics.length} metrics
                     </span>
-                    <span style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha40, transition: 'transform 0.2s', transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}>▾</span>
+                    {!forceOpen && (
+                        <span style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, color: theme.colors.whiteAlpha40, transition: 'transform 0.2s', transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>▾</span>
+                    )}
                 </div>
             </div>
 
             <AnimatePresence>
-                {open && (
+                {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
                         style={{ overflow: 'hidden', paddingLeft: '28px', paddingRight: '16px' }}
@@ -183,7 +186,10 @@ function ObjectiveRow({ obj, delay }: { obj: typeof funnelStages[0]['objectives'
 }
 
 /* ── Main Slide ── */
-export function Slide17() {
+export function Slide17({ stageIndex }: { stageIndex?: number }) {
+    const focusMode = stageIndex !== undefined;
+    const stages = focusMode ? [funnelStages[stageIndex]] : funnelStages;
+
     return (
         <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', padding: '40px 60px' }}>
             {/* Header */}
@@ -193,7 +199,7 @@ export function Slide17() {
             </motion.div>
             <motion.h2 variants={fadeUp} initial="hidden" animate="visible" custom={0}
                 style={{ fontFamily: theme.fonts.display, fontSize: theme.fontSizes['2xl'], fontWeight: 800, color: theme.colors.white, marginBottom: '16px' }}>
-                Nền tảng & Định dạng — <span style={{ color: COLOR }}>Theo mục tiêu quảng cáo</span>
+                Nền tảng & Định dạng — <span style={{ color: COLOR }}>{focusMode ? stages[0].label : 'Theo mục tiêu quảng cáo'}</span>
             </motion.h2>
 
             {/* Legend */}
@@ -207,8 +213,50 @@ export function Slide17() {
             </div>
 
             {/* Funnel stages */}
-            <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {funnelStages.map((stage) => (
+            <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {focusMode ? (
+                    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(stages[0].objectives.length, 3)}, 1fr)`, gap: '14px', flex: 1, minHeight: 0 }}>
+                        {stages[0].objectives.map((obj, j) => (
+                            <motion.div key={obj.name} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: j * 0.08 }}
+                                style={{ background: theme.colors.whiteAlpha10, borderTop: `4px solid ${obj.color}`, borderRadius: '0 0 4px 4px', padding: '16px', minHeight: 0 }}>
+                                <div style={{ fontFamily: theme.fonts.display, fontSize: theme.fontSizes.base, color: theme.colors.white, fontWeight: 900, lineHeight: 1.2, marginBottom: '12px' }}>
+                                    {obj.name}
+                                </div>
+
+                                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', fontWeight: 900, marginBottom: '6px' }}>
+                                    Ad formats
+                                </div>
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '12px' }}>
+                                    {obj.formats.map((f) => (
+                                        <span key={f} style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: COLOR, background: `${COLOR}18`, padding: '4px 8px', borderRadius: '12px', border: `1px solid ${COLOR}30` }}>
+                                            {f}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', fontWeight: 900, marginBottom: '6px' }}>
+                                    Metrics
+                                </div>
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '12px' }}>
+                                    {obj.metrics.map((m) => (
+                                        <span key={m} style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.accent, background: 'rgba(255,255,255,0.05)', padding: '4px 8px', borderRadius: '12px' }}>
+                                            {m}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                <div style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha40, textTransform: 'uppercase', fontWeight: 900, marginBottom: '6px' }}>
+                                    Best practices
+                                </div>
+                                {obj.bestPractices.map((bp) => (
+                                    <div key={bp} style={{ fontFamily: theme.fonts.body, fontSize: theme.fontSizes.xs, color: theme.colors.whiteAlpha60, lineHeight: 1.36, padding: '4px 0 4px 10px', borderLeft: `2px solid ${obj.color}30` }}>
+                                        {bp}
+                                    </div>
+                                ))}
+                            </motion.div>
+                        ))}
+                    </div>
+                ) : stages.map((stage) => (
                     <div key={stage.stage}>
                         <div style={{
                             display: 'flex', justifyContent: 'space-between', alignItems: 'center',
@@ -227,7 +275,7 @@ export function Slide17() {
                         </div>
 
                         {stage.objectives.map((obj, j) => (
-                            <ObjectiveRow key={obj.name} obj={obj} delay={j * 0.06} />
+                            <ObjectiveRow key={obj.name} obj={obj} delay={j * 0.06} forceOpen={focusMode} />
                         ))}
                     </div>
                 ))}

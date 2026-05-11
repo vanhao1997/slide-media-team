@@ -45,8 +45,10 @@ const goals = [
     },
 ];
 
-export function Slide21() {
-    const [activeGoal, setActiveGoal] = useState(0);
+export function Slide21({ activeIndex }: { activeIndex?: number }) {
+    const [internalActiveGoal, setActiveGoal] = useState(0);
+    const staticMode = activeIndex !== undefined;
+    const activeGoal = activeIndex ?? internalActiveGoal;
 
     return (
         <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', padding: '50px 70px' }}>
@@ -61,16 +63,29 @@ export function Slide21() {
 
             <div style={{ display: 'flex', gap: '8px', marginBottom: '20px' }}>
                 {goals.map((g, i) => (
-                    <button key={i} onClick={(e) => { e.stopPropagation(); setActiveGoal(i); }}
-                        style={{
-                            fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, fontWeight: activeGoal === i ? 700 : 400,
-                            color: activeGoal === i ? g.color : theme.colors.whiteAlpha40,
-                            background: activeGoal === i ? `${g.color}15` : 'transparent',
-                            border: `1px solid ${activeGoal === i ? g.color : theme.colors.whiteAlpha10}`,
-                            padding: '10px 20px', cursor: 'pointer', borderRadius: '4px', transition: 'all 0.2s',
-                        }}>
-                        {g.label}
-                    </button>
+                    staticMode ? (
+                        <div key={i}
+                            style={{
+                                fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, fontWeight: activeGoal === i ? 800 : 500,
+                                color: activeGoal === i ? g.color : theme.colors.whiteAlpha40,
+                                background: activeGoal === i ? `${g.color}15` : 'transparent',
+                                border: `1px solid ${activeGoal === i ? g.color : theme.colors.whiteAlpha10}`,
+                                padding: '10px 20px', borderRadius: '4px',
+                            }}>
+                            {g.label}
+                        </div>
+                    ) : (
+                        <button key={i} onClick={(e) => { e.stopPropagation(); setActiveGoal(i); }}
+                            style={{
+                                fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, fontWeight: activeGoal === i ? 700 : 400,
+                                color: activeGoal === i ? g.color : theme.colors.whiteAlpha40,
+                                background: activeGoal === i ? `${g.color}15` : 'transparent',
+                                border: `1px solid ${activeGoal === i ? g.color : theme.colors.whiteAlpha10}`,
+                                padding: '10px 20px', cursor: 'pointer', borderRadius: '4px', transition: 'all 0.2s',
+                            }}>
+                            {g.label}
+                        </button>
+                    )
                 ))}
             </div>
 

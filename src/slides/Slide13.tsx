@@ -91,11 +91,14 @@ function ObjectivesTab() {
     );
 }
 
-export function Slide13() {
+export function Slide13({ tabIndex }: { tabIndex?: number }) {
+    const staticMode = tabIndex !== undefined;
     return (
         <TabbedSlide
             subtitle="Meta Ads"
-            title='<span style="color: #1877F2">Meta Ads</span> — Chi tiết Ad Formats & Benchmark'
+            title={<><span style={{ color: META_COLOR }}>Meta Ads</span> — Chi tiết Ad Formats & Benchmark</>}
+            activeTab={tabIndex}
+            staticMode={staticMode}
             tabs={[
                 { label: 'Mục tiêu', color: META_COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: META_COLOR, content: <FormatsTab /> },

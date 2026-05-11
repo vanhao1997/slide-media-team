@@ -7,7 +7,7 @@ Bộ slide thuyết trình nội bộ về **Media Performance** cho team Accoun
 | Layer | Technology |
 |-------|-----------| 
 | Framework | React 19 + TypeScript |
-| Build | Vite 6 |
+| Build | Vite 8 |
 | Styling | TailwindCSS v4 + Inline styles |
 | Animation | Framer Motion |
 | Fonts | Montserrat (display) + Be Vietnam Pro (body) — Vietnamese support |
@@ -42,7 +42,7 @@ src/
     ├── Slide11.tsx - Slide22.tsx   # Module 2: Platforms (8 nền tảng, mỗi cái có tab Mục tiêu + Formats + Benchmark)
     ├── Slide23.tsx - Slide25.tsx   # Module 3: Optimization + Account-Media Workflow
     ├── Slide26.tsx                 # Omnichannel Ecosystem Funnel
-    ├── Slide27.tsx                 # Content Format Guide (Interactive)
+    ├── Slide27.tsx                 # Content Format Guide (remote-friendly states)
     ├── Slide29.tsx                 # Optimization Checklist
     ├── Slide30.tsx - Slide31.tsx   # Takeaway + KPI Cheat Sheet
     └── Slide32.tsx                 # Closing: Thank you & Q&A
@@ -70,16 +70,15 @@ public/
 - **Logo:** P2P Digital (top-left on Slide01, top-right watermark on all others)
 
 ## Interactive Components
-1. **TabbedSlide** — Click tab buttons to switch content (platforms: Mục tiêu / Formats / Benchmark)
+1. **TabbedSlide** — Supports interactive tabs, but presenter flow uses fixed tab states as separate slide entries.
 2. **ProgressiveReveal** — Click to show items one by one
 3. **Interactive Selector** — Buttons to filter content by objective (Slide 21, 27, 31)
 4. **Omnichannel Funnel** — 4-column grid showing Attract → Retarget → Convert → Retain
 
 ## Slide Content Structure (V2)
-Each platform slide (13-20) uses TabbedSlide with 3 tabs:
+Each platform slide (13-20) uses remote-friendly fixed states:
 1. **Mục tiêu (Objectives):** Phân theo phễu Nhận thức → Cân nhắc → Chuyển đổi
 2. **Định dạng (Ad Formats):** Tên, mô tả, kích thước, tip, performance
-3. **Benchmark & Tips:** So sánh CTR/CPC/CPM theo ngành VN
 
 ## Platforms Covered (8)
 Meta Ads, Google Search, GDN, YouTube Ads, TikTok Ads, Zalo Ads, Display Banner (Admicro/VnExpress), LinkedIn Ads

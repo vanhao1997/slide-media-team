@@ -81,11 +81,14 @@ function ObjectivesTab() {
     );
 }
 
-export function Slide17b() {
+export function Slide17b({ tabIndex }: { tabIndex?: number }) {
+    const staticMode = tabIndex !== undefined;
     return (
         <TabbedSlide
             subtitle="TikTok Ads (Reservation)"
-            title='<span style="color: #FE2C55">TikTok Ads</span> — Reservation Formats (Book Trực Tiếp)'
+            title={<><span style={{ color: COLOR }}>TikTok Ads</span> — Reservation Formats (Book Trực Tiếp)</>}
+            activeTab={tabIndex}
+            staticMode={staticMode}
             tabs={[
                 { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },

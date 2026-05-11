@@ -39,8 +39,10 @@ const objectives = [
     },
 ];
 
-export function Slide27() {
-    const [active, setActive] = useState(0);
+export function Slide27({ activeIndex }: { activeIndex?: number }) {
+    const [internalActive, setActive] = useState(0);
+    const staticMode = activeIndex !== undefined;
+    const active = activeIndex ?? internalActive;
 
     return (
         <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', padding: '50px 70px' }}>
@@ -55,16 +57,29 @@ export function Slide27() {
 
             <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
                 {objectives.map((o, i) => (
-                    <button key={i} onClick={(e) => { e.stopPropagation(); setActive(i); }}
-                        style={{
-                            fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, fontWeight: active === i ? 700 : 400,
-                            color: active === i ? o.color : theme.colors.whiteAlpha40,
-                            background: active === i ? `${o.color}15` : 'transparent',
-                            border: `1px solid ${active === i ? o.color : theme.colors.whiteAlpha10}`,
-                            padding: '10px 20px', cursor: 'pointer', borderRadius: '4px', transition: 'all 0.2s',
-                        }}>
-                        {o.label}
-                    </button>
+                    staticMode ? (
+                        <div key={i}
+                            style={{
+                                fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, fontWeight: active === i ? 800 : 500,
+                                color: active === i ? o.color : theme.colors.whiteAlpha40,
+                                background: active === i ? `${o.color}15` : 'transparent',
+                                border: `1px solid ${active === i ? o.color : theme.colors.whiteAlpha10}`,
+                                padding: '10px 20px', borderRadius: '4px',
+                            }}>
+                            {o.label}
+                        </div>
+                    ) : (
+                        <button key={i} onClick={(e) => { e.stopPropagation(); setActive(i); }}
+                            style={{
+                                fontFamily: theme.fonts.body, fontSize: theme.fontSizes.sm, fontWeight: active === i ? 700 : 400,
+                                color: active === i ? o.color : theme.colors.whiteAlpha40,
+                                background: active === i ? `${o.color}15` : 'transparent',
+                                border: `1px solid ${active === i ? o.color : theme.colors.whiteAlpha10}`,
+                                padding: '10px 20px', cursor: 'pointer', borderRadius: '4px', transition: 'all 0.2s',
+                            }}>
+                            {o.label}
+                        </button>
+                    )
                 ))}
             </div>
 

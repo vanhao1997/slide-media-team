@@ -82,11 +82,14 @@ function ObjectivesTab() {
     );
 }
 
-export function Slide15() {
+export function Slide15({ tabIndex }: { tabIndex?: number }) {
+    const staticMode = tabIndex !== undefined;
     return (
         <TabbedSlide
             subtitle="Google Display Network"
-            title='<span style="color: #4285F4">GDN</span> — Ad Formats & Benchmark'
+            title={<><span style={{ color: COLOR }}>GDN</span> — Ad Formats & Benchmark</>}
+            activeTab={tabIndex}
+            staticMode={staticMode}
             tabs={[
                 { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },

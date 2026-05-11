@@ -82,11 +82,14 @@ function ObjectivesTab() {
     );
 }
 
-export function Slide19() {
+export function Slide19({ tabIndex }: { tabIndex?: number }) {
+    const staticMode = tabIndex !== undefined;
     return (
         <TabbedSlide
             subtitle="Display Banner Ads"
-            title='<span style="color: #FF9800">Display Banner</span> — Admicro, VnExpress & Báo lớn VN'
+            title={<><span style={{ color: COLOR }}>Display Banner</span> — Admicro, VnExpress & Báo lớn VN</>}
+            activeTab={tabIndex}
+            staticMode={staticMode}
             tabs={[
                 { label: 'Mục tiêu', color: COLOR, content: <ObjectivesTab /> },
                 { label: 'Ad Formats', color: COLOR, content: <FormatsTab /> },

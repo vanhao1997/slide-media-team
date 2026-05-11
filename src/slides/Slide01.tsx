@@ -53,7 +53,7 @@ export function Slide01() {
                         fontWeight: 600,
                     }}
                 >
-                    Internal Training
+                    Account Training
                 </motion.div>
 
                 <motion.h1
@@ -70,9 +70,11 @@ export function Slide01() {
                         marginBottom: '24px',
                     }}
                 >
-                    MEDIA
+                    DIGITAL
                     <br />
-                    <span style={{ color: theme.colors.accent }}>PERFORMANCE</span>
+                    <span style={{ color: theme.colors.accent }}>MARKETING</span>
+                    <br />
+                    <span style={{ fontSize: theme.fontSizes['4xl'] }}>BASICS</span>
                 </motion.h1>
 
                 <motion.p
@@ -88,7 +90,7 @@ export function Slide01() {
                         lineHeight: 1.6,
                     }}
                 >
-                    Kiến thức nền tảng cho Account Team
+                    Bản tóm tắt MediaGuide để tư vấn client tự tin hơn
                 </motion.p>
             </div>
 
@@ -126,7 +128,7 @@ export function Slide01() {
                     >
                         <strong>Tư vấn khách hàng</strong>
                         <br />
-                        <span style={{ opacity: 0.7 }}>hiệu quả hơn</span>
+                        <span style={{ opacity: 0.7 }}>bằng KPI, funnel và channel mix</span>
                     </div>
                 </div>
             </motion.div>
