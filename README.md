@@ -11,6 +11,10 @@ npm run dev
 
 Mở http://localhost:5173/
 
+Production paths:
+- `https://mediaguide.vibecodingsolution.ovh/resources/TikTok-Affiliate/`
+- `https://mediaguide.vibecodingsolution.ovh/learning/slide-media-team/index.html`
+
 ## 🌿 Branches
 
 | Branch | Nội dung | Deploy |
