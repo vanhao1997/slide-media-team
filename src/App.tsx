@@ -14,6 +14,9 @@ import {
   Slide28d, Slide28e, Slide28f, Slide28g, Slide28h,
   Slide29, Slide30, Slide31, Slide32,
 } from './slides';
+import {
+  Slide28i, Slide28j, Slide28k, Slide28l, Slide28m, Slide28n,
+} from './presentations/tiktok-affiliate';
 
 type DeckSlide = ComponentType<Record<string, never>>;
 type TabbedDeckSlide = ComponentType<{ tabIndex?: number }>;
@@ -52,6 +55,7 @@ const slides = [
   Slide27e, Slide27f, Slide27g, Slide27h, Slide27i, Slide27j, Slide27k, Slide27l,
   Slide28, Slide28a, Slide28b, Slide28c,
   Slide28d, Slide28e, Slide28f, Slide28g, Slide28h,
+  Slide28i, Slide28j, Slide28k, Slide28l, Slide28m, Slide28n,
   Slide29, Slide30, indexed(Slide31, 0), indexed(Slide31, 1), indexed(Slide31, 2), Slide32,
 ];
 
