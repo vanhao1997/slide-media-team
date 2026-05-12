@@ -12,7 +12,6 @@ npm run dev
 Mở http://localhost:5173/
 
 Production paths:
-- `https://mediaguide.vibecodingsolution.ovh/resources/TikTok-Affiliate/`
 - `https://mediaguide.vibecodingsolution.ovh/learning/slide-media-team/index.html`
 
 ## 🌿 Branches
@@ -21,9 +20,9 @@ Production paths:
 |--------|----------|--------|
 | `main` | V1 — Bản gốc (Bold Signal theme, 32 slides) | Production (Vercel) |
 | `v2` | V2 — P2P Branding + Funnel Alignment + Omnichannel (30 slides) | Preview (Vercel) |
-| `current` | Training V3 — Remote-friendly Digital Platform Basics + Content Format + MediaGuide + TikTok Find Creator (82 slide states) | Local / preview |
+| `current` | Training V3 — Remote-friendly Digital Platform Basics + Content Format + MediaGuide (76 slide states) | Local / preview |
 
-## 🎯 Nội dung hiện tại (82 slide states)
+## 🎯 Nội dung hiện tại (76 slide states)
 
 Deck có 32 slide được đánh số nội dung, cộng thêm các slide phụ `11a`-`11d`, `17b`, `21a`-`21b`, `27a`-`27l`, `28a`-`28h` và các tab/state được tách thành slide tuần tự để presenter dùng remote bấm Next mà không cần chuột.
 
@@ -37,11 +36,10 @@ Deck có 32 slide được đánh số nội dung, cộng thêm các slide phụ
 | Omnichannel | 26 | Hệ sinh thái đa kênh (Thu hút → Bám đuổi → Chốt → Chăm sóc) |
 | Content Format Basics | 27-27l | 6 nhóm content, platform-content mapping, creative checklist, content audit workshop |
 | MediaGuide Summary | 28-28h | Cách dùng MediaGuide trong workflow tư vấn, tình huống client, phân vai Account/Media, câu hỏi vàng, KPI funnel, launch readiness |
-| TikTok Find Creator | 28i-28n | Cách lọc creator, đọc trang detail, chấm shortlist và gửi lời mời có lý do |
 | Best Practices | 29-31 | Checklist, Takeaway, KPI Cheat Sheet |
 | Closing | 32 | Thank you & Q&A |
 
-Code slide lõi vẫn nằm trong `src/slides/`. Module TikTok Affiliate được tách riêng ở `src/presentations/tiktok-affiliate/` để tránh trộn logic training cũ với phần trình bày mới.
+Code slide lõi nằm trong `src/slides/`.
 
 ## 📋 Script thuyết trình
 
