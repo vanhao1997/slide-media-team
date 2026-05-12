@@ -120,6 +120,7 @@ function App() {
 
   return (
     <SlideLayout
+      key={isTikTokAffiliateDeck ? 'tiktok-affiliate-v20260512b' : 'full-deck'}
       slideIndex={currentSlide}
       totalSlides={slides.length}
       onNext={goNext}
