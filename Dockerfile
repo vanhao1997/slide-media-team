@@ -9,6 +9,7 @@ RUN npm run build
 FROM nginx:alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY --from=builder /app/dist /usr/share/nginx/html/learning/slide-media-team
+COPY --from=builder /app/dist /usr/share/nginx/html/learning/TikTok-Affiliate
 COPY --from=builder /app/dist /usr/share/nginx/html/learning/tiktok-affiliate
 COPY --from=builder /app/dist /usr/share/nginx/html/learning/tiktok-affilate
 COPY --from=builder /app/dist /usr/share/nginx/html/resources/TikTok-Affiliate
@@ -29,6 +30,14 @@ server {
 
     location /learning/slide-media-team/ {
         try_files $uri $uri/ /learning/slide-media-team/index.html;
+    }
+
+    location = /learning/TikTok-Affiliate {
+        return 308 /learning/TikTok-Affiliate/;
+    }
+
+    location /learning/TikTok-Affiliate/ {
+        try_files $uri $uri/ /learning/TikTok-Affiliate/index.html;
     }
 
     location = /learning/tiktok-affiliate {
