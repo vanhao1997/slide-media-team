@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package.json ./
 RUN npm install
 COPY . .
+ENV VITE_DECK=tiktok-affiliate
 RUN npm run build
 
 FROM nginx:alpine

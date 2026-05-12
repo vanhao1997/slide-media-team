@@ -12,12 +12,13 @@ npm run dev
 Mở http://localhost:5173/
 
 Production paths:
+- `https://mediaguide.vibecodingsolution.ovh/learning/TikTok-Affiliate/`
 - `https://mediaguide.vibecodingsolution.ovh/learning/tiktok-affilate/`
 - `https://mediaguide.vibecodingsolution.ovh/learning/tiktok-affiliate/`
 - `https://mediaguide.vibecodingsolution.ovh/resources/TikTok-Affiliate/`
 - `https://mediaguide.vibecodingsolution.ovh/learning/slide-media-team/index.html`
 
-`/learning/tiktok-affilate/`, `/learning/tiktok-affiliate/`, and `/resources/TikTok-Affiliate/` render only the standalone TikTok Affiliate module. `/learning/slide-media-team/index.html` keeps the full Account Training deck.
+`/learning/TikTok-Affiliate/`, `/learning/tiktok-affilate/`, `/learning/tiktok-affiliate/`, and `/resources/TikTok-Affiliate/` render only the standalone TikTok Affiliate module. `/learning/slide-media-team/index.html` keeps the full Account Training deck.
 
 ## 🌿 Branches
 

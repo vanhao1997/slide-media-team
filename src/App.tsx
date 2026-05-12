@@ -71,7 +71,9 @@ const isTikTokAffiliateRoute = () => (
   ].some((route) => window.location.pathname.toLowerCase().startsWith(route))
 );
 
-const slides = isTikTokAffiliateRoute() ? tiktokAffiliateSlides : fullDeckSlides;
+const isTikTokAffiliateDeck = import.meta.env.VITE_DECK === 'tiktok-affiliate' || isTikTokAffiliateRoute();
+
+const slides = isTikTokAffiliateDeck ? tiktokAffiliateSlides : fullDeckSlides;
 
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
