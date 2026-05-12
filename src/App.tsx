@@ -35,7 +35,7 @@ const stage = (Component: StageDeckSlide, stageIndex: number): DeckSlide => func
   return <Component stageIndex={stageIndex} />;
 };
 
-const slides = [
+const fullDeckSlides = [
   Slide01, Slide02, Slide03, Slide04, Slide05,
   Slide06, Slide07, Slide08, Slide09, Slide10,
   Slide11, Slide11a, Slide11b, Slide11c, Slide11d,
@@ -55,9 +55,23 @@ const slides = [
   Slide27e, Slide27f, Slide27g, Slide27h, Slide27i, Slide27j, Slide27k, Slide27l,
   Slide28, Slide28a, Slide28b, Slide28c,
   Slide28d, Slide28e, Slide28f, Slide28g, Slide28h,
-  Slide28i, Slide28j, Slide28k, Slide28l, Slide28m, Slide28n,
   Slide29, Slide30, indexed(Slide31, 0), indexed(Slide31, 1), indexed(Slide31, 2), Slide32,
 ];
+
+const tiktokAffiliateSlides = [
+  Slide28i, Slide28j, Slide28k, Slide28l, Slide28m, Slide28n,
+];
+
+const isTikTokAffiliateRoute = () => (
+  typeof window !== 'undefined'
+  && [
+    '/resources/tiktok-affiliate',
+    '/learning/tiktok-affiliate',
+    '/learning/tiktok-affilate',
+  ].some((route) => window.location.pathname.toLowerCase().startsWith(route))
+);
+
+const slides = isTikTokAffiliateRoute() ? tiktokAffiliateSlides : fullDeckSlides;
 
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
